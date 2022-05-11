@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <h2>Lançamentos</h2>
+   
+    <div class="container">
+      <div class="row">
+          <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="/">ControDinheiro</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/categoria">Categoria <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Lancamento</a>
+                  </li>
+                 
+              
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                </form>
+              </div>
+            </nav>
+    </div>
+    </div>
+   
+     
+        <form action="/salva" method="POST">
+            <div class="form-group">
+              <label for="form_lancamento">Tipo de Lançamento</label><br>
+              <label class="form-check-label"> Ganho</label>
+              <input type="radio" class="form-check-input" id="ganho"name="ganho"><br>
+              <label class="form-check-label">Gasto</label>
+              <input type="radio" class="form-check-input" id="gasto"name="gasto"><br>
+              <label for="form_lancamento">Valor de Lançamento</label><br>
+              <input type="number"  id="valor" name="valor" placeholder="Seu Lançamento"><br>
+              <label for="form_lancamento">Data do Lançamento</label><br>
+              <input type="date"  id="data_lancamento" name="data_lancamento"><br>
+              <!--if(listLimite.forEach(element => {
+                vetor_limite[i] = element.limite;-->
+                
+                  <% if(listLancamento.length > 0)( element => {%>
+                    if(element.valor > element.limite")
+                    <p><%= "Seu valor limite é de " + element.limite %></p>
+                  <% });%>   
+               
+                
+                
+              
+             <label for="data">Categoria</label><br>
+                <select name="select_novo" id="select_novo">
+                  <% listLancamento.forEach( element => {%>
+                  <option ><%= element.categoria %></option>
+                  <% });%>
+                </select>
+
+                <br><br>
+   
+                  <button type="submit" class="btn btn-primary" >Lançar</button>
+           
+          </form>
+
+   
+    
+   
+    </div>
+    
+    
+       <!--<script src="/script.js"></script>-->
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+  

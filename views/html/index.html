@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <%- include("./partials/header") %>
+<body>
+    
+
+    <center><h2><meta charset="utf-8">Ações</h2></center>
+
+<h3><meta charset="utf-8">Cadastrar ações</h3>
+
+    <form action="/salva" method="POST">
+
+      <label for="fname"><meta charset="utf-8">Código de indentificação:</label><br>
+      <input type="text" id="cod" name="cod" value=""><br>
+  
+      <label for="fname">Setor de atuação:</label><br>
+      <input type="text" id="atuacao" name="atuacao" value=""><br>
+  
+      <label for="lname">Valor da ação:</label><br>
+      <input type="text" id="valor" name="valor" value=""><br>
+  
+      <label for="lname">Quantidade de ações:</label><br>
+      <input type="text" id="quant" name="quant" value=""><br><br>
+  
+      <label for="fname">Tipo da ação:</label><br>
+      <label class="form-check-label"> Preferencial</label>
+      <input type="radio" class="form-check-input" id="preferencial"name="preferencial">
+  
+      <label class="form-check-label"> Ordinária</label>
+      <input type="radio" class="form-check-input" id="Ordinária"name="Ordinária"><br>    
+  
+      <label for="lname"><meta charset="utf-8">Fracionária?</label><br>
+      <label class="form-check-label"> Sim</label>
+      <input type="radio" class="form-check-input" id="sim"name="sim">
+      <label class="form-check-label"> Não</label>
+      <input type="radio" class="form-check-input" id="nao"name="nao"><br><br>
+  
+     <!-- <label for="fname">Codigo dá ação a ser Comprada</label><br>
+      <input type="text" id="compra" name="compra" value=""><br>-->
+    <input type="submit" value="Cadastrar">
+    
+    </form> 
+  
+  
+
+
+      <div>
+       
+        Tamanho da lista <%= listElements.length %>.
+      
+      </div>
+
+      <% if (listElements.length ) {%>
+        <table>
+            <tr>
+              <td>{$Codigo de Indentificação}</td>
+              <td>{$Setor de atuação}</td>
+            </tr> 
+        <% listElements.forEach( element => {%>
+            <tr>
+                <td><%= element.cod %></td>
+                <td><%= element.atuacao %></td>
+                <td><%= element.valor %></td>
+                <td><%= element.quant %></td>
+                <td><%= element.preferencial %></td>
+                <td><%= element.sim %></td>
+            </tr>
+        <% });%>      
+        </table>
+    <% }%>
+</body>
+</html>

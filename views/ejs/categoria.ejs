@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <h2>Categorias</h2>
+
+    <div class="container">
+      <div class="row">
+          <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="/">ControDinheiro</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Categoria <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/lancamento">Lancamento</a>
+                  </li>
+                 
+              
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                </form>
+              </div>
+            </nav>
+    </div>
+    </div>
+   
+     
+        <form action="/salvaCategoria" method="POST">
+            <div class="form-group">
+              <label for="form_categorias">Categorias</label><br>
+              <input type="text"  id="categoria" name="categoria" placeholder="Informe A Categoria de Lançamento">
+            </div>
+            
+    
+            <button type="submit" class="btn btn-primary">Concluido</button>
+          </form>
+
+   
+    <p>Tabela de Categorias</p>
+    <% if (listCategoria.length  > 0) {%>
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Categorias</th>
+        </tr>
+      </thead>
+      <% listCategoria.forEach( element => {%>
+        <tr>
+          <td><%= element.categoria %></td>
+      </tr>
+      <% });%>   
+    </table>
+    <% }%>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categorias
+      </a>
+      
+      <div class="dropdown-menu"
+        <% listCategoria.forEach( element => {%>
+        <a><%= element.categoria %></a> <br>
+      <% });%> 
+    </div>
+    </li>
+   
+    </div>
+    
+
+  
+
+    
+
+    
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+  
