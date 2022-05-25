@@ -11,4 +11,20 @@ const client = mongoClient.connect(uri, {useUnifiedTopology: true }, (error, con
     console.log("conectou!");
 });
 
+
+const Sequelize = require("sequelize");
+const configDb = require("./config/relationalDb");
+const Categoria = require("./models/Categoria");
+const Lancamentos = require("./models/Lancamentos");
+//const Lancamentos = require("./models/Lancamentos");
+const  Limite = require("./models/Limite");
+
+const connection = new Sequelize(configDb);
+
+
+Categoria.init(connection);
+Lancamentos.init(connection);
+Limite.init(connection);
+
+
 module.exports = {}; 

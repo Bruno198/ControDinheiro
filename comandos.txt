@@ -1,0 +1,4 @@
+ =npm install pg sequelize sequelize-cli
+ ./node_modules/.bin/sequelize db:create
+./node_modules/.bin/sequelize migration:create --name=create_user_table
+./node_modules/.bin/sequelize db:migrate
