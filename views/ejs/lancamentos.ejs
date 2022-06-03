@@ -41,7 +41,9 @@
     </div>
     </div>
    
-     
+    <p>Limite Cadastrado : <%=" R$ "+ armazena_limite %></p>
+   
+  
         <form action="/salva" method="POST">
             <div class="form-group">
               <label for="form_lancamento">Tipo de Lançamento</label><br>
@@ -53,6 +55,13 @@
               <input type="number"  id="valor" name="valor" placeholder="Seu Lançamento"><br>
               <label for="form_lancamento">Data do Lançamento</label><br>
               <input type="date"  id="data_lancamento" name="data_lancamento"><br>
+              <label for="form_lancamento">Converter para dolar ?</label><br><brr>
+                <label for="form_lancamento">Sim</label><br>
+                <input type="radio" class="form-check-input" id="dolar"name="dolar"><br>
+                <label for="form_lancamento">Não</label><br>
+                <input type="radio" class="form-check-input" id="nao_converter"name="nao_converter"><br>
+
+
               <!--if(listLimite.forEach(element => {
                 vetor_limite[i] = element.limite;-->
                 
@@ -67,13 +76,15 @@
              <label for="data">Categoria</label><br>
                 <select name="select_novo" id="select_novo">
                   <% listLancamento.forEach( element => {%>
-                  <option ><%= element.categoria %></option>
+                  <option value="<%= element.id_categoria%>"><%= element.categoria%></option>
                   <% });%>
                 </select>
-
+                
                 <br><br>
-   
-                  <button type="submit" class="btn btn-primary" >Lançar</button>
+                <%if(valor_lancamento > armazena_limite) {%>
+                <p><%= utrapassou_limite %></p>
+                <% }%>
+                  <button type="submit" class="btn btn-primary"  >Lançar</button>
            
           </form>
 

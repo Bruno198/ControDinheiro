@@ -5,7 +5,7 @@ const { Model, DataTypes } = require('sequelize');
   static init (connection){
     super.init({
       limite: DataTypes.STRING
-    }, {sequelize: connection });
+    }, {sequelize: connection ,timestamps: false});
   }
 };
 

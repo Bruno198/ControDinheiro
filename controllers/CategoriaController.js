@@ -4,7 +4,7 @@ const Lancamentos = require("../models/Lancamentos");
 module.exports = {
      loadCategoria (req, res) {
           Categoria.findAll().then((data) => {// para fazer join includi e o nome dá tabela que eu quero fazer join
-            res.render(__dirname+"/../views/ejs/categoria", {listCategoria : data});
+            res.render(__dirname+"/../views/ejs/categoria", {listCategoria : data ,Categoria:Categoria});
             console.log("LListouCategoria\n\n\n");
           });
           

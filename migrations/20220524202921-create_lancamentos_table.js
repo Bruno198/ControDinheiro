@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('Lancamentos', {
+    await queryInterface.createTable('lancamentos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -21,13 +21,41 @@ module.exports = {
       data_lancamento: {
         type: Sequelize.DATE
       },
-      select_novo: {
-        type: Sequelize.STRING
+      id_categoria: {
+        type: Sequelize.INTEGER ,
+        references: {model : "categoria" , key : "id"}
       },
+      saldo: {
+        type: Sequelize.STRING
+      }
     });
-  },
+  
 
+  await queryInterface.createTable('lancamentos_categorizados', {
+    categoria_id: {
+      type: Sequelize.DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      references: {
+        model: {
+          tableName: 'categoria',
+          schema: 'public'
+        },
+        key: 'id'
+      }
+    },
+    created_at: {
+      allowNull: false,
+      type: Sequelize.DATE
+    },
+    updated_at: {
+      allowNull: false,
+      type: Sequelize.DATE
+    }
+  });
+},
   async down (queryInterface, Sequelize) {
-    queryInterface.dropTable('Lancamentos');
+    queryInterface.dropTable('lancamentos');
+    queryInterface.dropTable('lancamentos_categorizados');
   }
 };

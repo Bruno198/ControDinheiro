@@ -1,25 +1,48 @@
 const Lancamentos = require("../models/Lancamentos");
+const Limite = require("../models/Limite");
+const id_categoria = require("../models/categoriaList");
 
+let armazena_limite;
 module.exports = {
    async saveLancamento (req, res) { 
+      let soma = "";
       if(req.body.ganho === "on")
       req.body.ganho = "Ganho";
       else if(req.body.ganho !== "on")
       req.body.gasto = "Gasto";
+    
+      else if(req.body.ganho === "on")
+      soma = soma + req.body.valor;
 
-      req.body.data_lancamento
-
+      else if(req.body.gasto === "on")
+      soma = soma - req.body.valor;
+      console.log(soma +"\n");
+    //  req.body.data_lancamento
+    
+    armazena_limite = req.body.limite; // pode ser tenha q ser antes do criar
+    console.log("Salvou Limite no ControlerLancamentos "+ armazena_limite+"\n\n\n");
+   
        await Lancamentos.create(req.body);
+       console.log("Salvou Lancamento "+"\n\n\n");
+       await Limite.create(req.body);
+      
+      
+      
        console.log("SalvouLancamentos\n\n\n");
-     
-       //global.connection.collection("elementosHoje").insertOne();
+       console.log("Salvou Limite "+ armazena_limite+"\n\n\n");
+       format24Hou(req.body.data_lancamento);
+      // aqui é só para salvar os lancamentos
+   //salvar faz insert e o load (listar) faz o select
+      
         res.redirect("/");
    },
-   loadLancamento (req, res) {
-      Lancamentos.findAll().then((data) => {// para fazer join includi e o nome dá tabela que eu quero fazer join
-        res.render(__dirname+"/../views/ejs/lancamentos", {listLancamento : data});
-        console.log("LListouLancamento\n\n\n");
-      });
-      
+   listaCategoria (req, res) {
+      id_categoria.findAll().then((data) => {       
+   console.log("foilistada\n\n\n");
+   //            console.log(soma);
+         res.render(__dirname+"/../views/ejs/lancamentos", {listLancamento : data});
+       //  await Lancamentos.create(req.body);
+      })
    }
+ 
 }
