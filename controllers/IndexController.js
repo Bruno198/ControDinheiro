@@ -1,19 +1,20 @@
-
 const Lancamentos = require("../models/Lancamentos");
 const Categoria = require("../models/Categoria");
+const Porcentagem = require("../models/Porcentagem");
+const { setInternalBufferSize } = require("bson");
 
 let salvaSaldo;
 let soma ;
 let converter , flag = 0 , novoGanho , nao_convertido;
 let conversaos_dolar = [];
-let coveter_dolar;
+let coveter_dolar , porcentagem;
 module.exports = {
 
     loadIndex (req, res) {
         Lancamentos.findAll().then((data) => {       
      console.log("foi\n\n\n");
 //            console.log(soma);
-           res.render(__dirname+"/../views/ejs/index", {list : data , Lancamentos : Lancamentos  , soma ,categoriaList :data  , converter , flag , listconvert :data ,salvaSaldo , novoGanho , nao_convertido , coveter_dolar});
+           res.render(__dirname+"/../views/ejs/index", {list : data , Lancamentos : Lancamentos  , soma ,categoriaList :data  , converter , flag , listconvert :data ,salvaSaldo , novoGanho , nao_convertido , coveter_dolar });
          //  await Lancamentos.create(req.body);
         
          
@@ -62,6 +63,9 @@ module.exports = {
           coveter_dolar = "on"
        let enviaConversao;
        enviaConversao = converter;
+       //nao_convertido = "";
+
+       // insere na tabela conversão com um insert manual
         }
         else if(req.body.dolar !== "on")
         {
@@ -69,12 +73,24 @@ module.exports = {
           coveter_dolar = "";
           nao_convertido = "Nenhuma Conversão selecionada"; 
           console.log(nao_convertido);
+          converter = 0;
         }
+        if(req.body.Porcentagem !== "")
+        {
+          porcentagem = req.body.sim_porcentagem;
+          let pega_porcentagem;
+          let Convert_para_porcentagem;
+          //como converter o 20 para 0,020
+          porcentagem = req.body.porcentagem;
+         // Convert_para_porcentagem = (porcentagem / 100) / req.body.valor;
+          //Convert_para_porcentagem = (porcentagem / 100) / 100;
+          pega_porcentagem =  req.body.valor * Convert_para_porcentagem;
+        }
+       //else if(req.body.nao_porcentagem)
+       //pega_porcentagem = "Nenhuma Porcentagem";
         
        
-        
-       
-         
+         let insert = "insert into conversaos (valor_original , valor_convertido , data_da_conversao) values(enviaConversao , valor_original)";
          
         // quando eu fizer o one to many para o lancamentos eu consigo usar o nome do model.o atributo do bancco
         // e eu posso criar um atributo saldo no banco para armazenar a soma e ai usar o atributo

@@ -98,9 +98,81 @@
     </div>
   </div>
 </div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_usuario">
+  Cadastre se
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5><br>
+      
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/saveUsuario" method="POST">
+          <div class="form-group">
+            <label for="form_categorias">Nome</label><br>
+            <input type="text"  id="usuarioNome" name="usuarioNome" placeholder="Informe o Limite">
+            <label for="form_categorias">Sobrenome</label><br><br>
+            <input type="text"  id="usuarioSobrenome" name="usuarioSobrenome" placeholder="Informe o Limite">
+            <label for="form_categorias">Email</label><br><br>
+            <input type="text"  id="email" name="email" placeholder="Informe o Limite">
+            <label for="form_categorias">Telefone</label><br>
+            <input type="text"  id="telefone" name="telefone" placeholder="Informe o Limite">
+            <label for="form_categorias">senha</label><br>
+            <input type="text"  id="senha" name="senha" placeholder="Informe o Limite">
+
+          </div>
+          <button type="submit" class="btn btn-primary" >Concluido</button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>
     </div>
-   <% if(converter > 0){%>
+  </div>
+</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_porcentagem">
+ Porcentagem
+</button>
+<div class="modal fade" id="modal_porcentagem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalporcentagem">Porcentagem de Lancamentos</h5><br>
+       
+        <p>Quanto voçe quer de porcentagem de 20 a 100%</p><br>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/savePorcentagem" method="POST">
+          <div class="form-group">
+            
+            <label for="form_categorias">Informe aqui</label><br>
+            <input type="text"  id="porcentagem" name="porcentagem" placeholder="Informe a Porcentagem">
+          </div>
+          <button type="submit" class="btn btn-primary" >Concluido</button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+    <% if(converter > 0){%>
       <p>Valor <%= "R$" + salvaSaldo%> Convertido em Dolar: <%=" US$ "+ converter%></p>
       <% }%>
       <% if(coveter_dolar !== "on"){%>
@@ -109,7 +181,6 @@
     <!-- <% if(converter !== "on"){%>
         <p> <%= converter%></p>
         <% }%>--> 
-  
     <% if (list.length  > 0) {%>
       <p>Tabela de Lançamentos</p>
     <table class="table table-striped table-dark">
@@ -122,27 +193,14 @@
           <th scope="col">Limite</th>
         </tr>
       </thead>
-      <% listconvert.forEach( element => {%>
+      <% list.forEach( element => {%>
         <tr>
-          <% if(--flag == 1) {%><!--flag == 1-->
-          <td><%= "US$" + element.valor  %> </td>
-            <td><%= element.data_lancamento %></td>
-          <td><%= novoGanho%></td>
-          <td><%= element.select_novo %> </td>
-          <td><%=  element.limite  %>  </td>
-            <% }%>
-
-            <% list.forEach( element => {%>
-            <% if(--flag != 1) {%><!--flag != 1-->
-             
           <td><%= "R$" + element.valor %> </td>
           <td><%= element.data_lancamento %></td>
-          <td><%= novoGanho%></td>
+          <td><%= element.ganho ? "+ Ganho" : "- Gasto"%></td>
           <td><%= element.select_novo %> </td>
           <td><%=  element.limite  %>  </td>
-          <% }%>
       </tr>
-      <% });%>   
       <% });%>   
     </table>
     <% }%>
@@ -160,9 +218,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-
-
-
-  

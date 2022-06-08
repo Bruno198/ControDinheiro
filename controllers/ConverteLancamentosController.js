@@ -1,21 +1,25 @@
 
 const Lancamentos = require("../models/Lancamentos");
 const Categoria = require("../models/Categoria");
+const Conversao = require("../models/Conversao");
+const LancamentoController = require("../controllers/LancamentoController");
 
-let salvaSaldo;
-let soma ;
+
+let valor_original = [] ,enviaConversao = [];
+let nenhuma_conversao;
+
 module.exports = {
 
-    loadConverter (req, res) {
-        if(req.body.dolar === "on")
-        {
-          let valor_original;
-            valor_original = req.body.valor;
-            let enviaConversao;
-            enviaConversao = converter;
-            res.render(__dirname+"/../views/ejs/converte", {enviaConversao , valor_original});
-        }
+   loadConverter (req, res) { 
+  
+      
+           
+     
+           res.render(__dirname+"/../views/ejs/converte", { listConverter: dataConverter ,  nenhuma_conversao  });
+          
+     
+           
       }
+   } 
          
    
-}

@@ -18,6 +18,9 @@ const Categoria = require("./models/Categoria");
 const Lancamentos = require("./models/Lancamentos");
 //const Lancamentos = require("./models/Lancamentos");
 const  Limite = require("./models/Limite");
+const  Conversao = require("./models/Conversao");
+const  Porcentagem = require("./models/Porcentagem");
+const  User = require("./models/User");
 
 const connection = new Sequelize(configDb);
 
@@ -25,6 +28,11 @@ const connection = new Sequelize(configDb);
 Categoria.init(connection);
 Lancamentos.init(connection);
 Limite.init(connection);
+Conversao.init(connection);
+Porcentagem.init(connection);
+User.init(connection);
+
+
 
 
 module.exports = {}; 
