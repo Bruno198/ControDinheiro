@@ -1,6 +1,6 @@
-const Categoria = require("../models/Categoria");
-const Lancamentos = require("../models/Lancamentos");
+
 const User = require("../models/User");
+const bcrypt = require('bcryptjs');
 
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
         req.body.password = bcrypt.hashSync(req.body.password); 
         await User.create(req.body);
         //global.connection.collection("elementosHoje").insertOne();
-         res.redirect("/");
+        res.redirect("/login");
     } ,
 
     loadLogin (req, res){

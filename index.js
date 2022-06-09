@@ -44,11 +44,6 @@ app.use(express.static('public'));
 }
 
 
-
-
-/*
-    User Routes
-*/
 app.get("/login", UsuarioController.loadLogin);
 app.post("/login", passport.authenticate('local',{
     successRedirect: '/',
@@ -58,48 +53,6 @@ app.get("/logout", (req, res) =>{
     req.logOut((err) =>{console.log(err);});
     res.redirect('/');
 });
-
-//app.get("/users", authenticationMiddleware, UsuarioController.loadIndex);
-//app.post("/action", authenticationMiddleware, UserController.saveUser);
-
-/*
-    Product Routes
-*/
-app.get("/" , authenticationMiddleware,  IndexController.loadIndex);
-app.get("/categoria" , authenticationMiddleware,  CategoriaController.loadCategoria);
-
-//app.get("/" , authenticationMiddleware ,IndexController.loadIndex)
-
-/*
-    Buy Routes
-*/
-//app.get("/users/:user_id/buys", authenticationMiddleware, BuyController.loadBuy);
-//app.post("/users/:user_id/saveBuy", authenticationMiddleware, BuyController.saveBuy);
-
-app.get("/", authenticationMiddleware, (req, res) => {
-    console.log(__dirname + "/../html/index.html");
-    res.sendFile(
-        global.rootPath + "/views/html/index.html" // pq tu tá indo para o index
-    );
-});
-
-
-/*
-    Última rota pode ser o 404
-*/
-app.get('*', (req, res)=>{
-    res.sendFile(
-        global.rootPath + "/views/html/404.html", 404
-    );
-});
-
-
-
-
-
-
-
-
 
 app.get("/" , IndexController.loadIndex);// chamando lancamentos
 app.get("/converte" , convertLancamentosController.loadConverter);
@@ -114,6 +67,29 @@ app.post("/salvaLimite", LimiteController.saveLimite);
 app.post("/savePorcentagem", PorcentagemController.savePorcentagem);
 app.post("/saveUsuario", UsuarioController.saveUsuario);
 //app.post("/salva", convertLancamentosController.saveLancamentodolar);// salva os dados
+
+app.get("/", authenticationMiddleware, (req, res) => {
+    console.log(__dirname + "/../html/index.html");
+    res.sendFile(
+        global.rootPath + "/views/html/index.html" // pq tu tá indo para o index
+    );
+});
+
+
+app.get('*', (req, res)=>{
+    res.sendFile(
+        global.rootPath + "/views/html/404.html", 404
+    );
+});
+
+
+
+
+
+
+
+
+
 
 const server =  app.listen(8080, function(){
     console.log("Running");
