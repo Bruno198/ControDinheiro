@@ -7,6 +7,9 @@ const { Model, DataTypes } = require('sequelize');
       categoria: DataTypes.STRING
     }, {sequelize: connection , timestamps: false});
   }
+  static associate(models){
+    this.hasMany(models.Lancamentos, {foreignKey: "id_categoria", as: "lancamentos"});
+  }
 };
 
 module.exports = Categoria;

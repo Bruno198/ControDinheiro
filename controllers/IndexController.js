@@ -2,31 +2,43 @@ const Lancamentos = require("../models/Lancamentos");
 const Categoria = require("../models/Categoria");
 const Porcentagem = require("../models/Porcentagem");
 const { setInternalBufferSize } = require("bson");
+const User = require("../models/User");
+const { root } = require("./UsuarioController");
+const Conversao = require("../models/Conversao");
 
 let salvaSaldo;
-let soma ;
+let soma  = 0;
 let converter , flag = 0 , novoGanho , nao_convertido;
 let conversaos_dolar = [];
-let coveter_dolar , porcentagem;
+let coveter_dolar , porcentagem , nomeUsuario , temp = 3 , msg_logar;
 module.exports = {
 
     loadIndex (req, res) {
         Lancamentos.findAll().then((data) => {       
-     console.log("foi\n\n\n");
-//            console.log(soma);
-           res.render(__dirname+"/../views/ejs/index", {list : data , Lancamentos : Lancamentos  , soma ,categoriaList :data  , converter , flag , listconvert :data ,salvaSaldo , novoGanho , nao_convertido , coveter_dolar });
-         //  await Lancamentos.create(req.body);
-        
+          Categoria.findAll().then((dataCategoria) => {
+           
+              console.log("foi\n\n\n");
+                   msg_logar = "Faça Login Para Continuar Usando o Contro Dinheiro";
+                
          
-         if(req.body.dolar === "on")
-        {
-          let valor_original;
-            valor_original = req.body.valor;
-            let enviaConversao;
-            enviaConversao = converter;
-            res.render(__dirname+"/../views/ejs/converte", {enviaConversao , valor_original});
-        }
-       
+                    res.render(__dirname+"/../views/ejs/index", { listCategoria : dataCategoria, list : data , Lancamentos : Lancamentos  , soma ,categoriaList :data  , converter , flag , listconvert :data ,salvaSaldo , novoGanho , nao_convertido , coveter_dolar  , nomeUsuario , msg_logar , temp});
+                  //  await Lancamentos.create(req.body);
+                  
+                  // root = -1;
+                
+                 
+                  
+                  if(req.body.dolar === "on")
+                 {
+                   let valor_original;
+                     valor_original = req.body.valor;
+                     let enviaConversao;
+                     enviaConversao = converter;
+                     res.render(__dirname+"/../views/ejs/converte", {enviaConversao , valor_original});
+                 }
+                
+                  });
+    
          });
     },
     async saveLancamento (req, res) { 
@@ -35,6 +47,11 @@ module.exports = {
         await Lancamentos.create(req.body);
         console.log("SalvouLancamentos\n\n\n");
       
+
+       ///   for(let i =0; i < listCategoria.length; i++)
+          //{
+            //req.body.select_novo = req.body.Categoria;
+          //}
        if(req.body.ganho === "on")
         novoGanho = " +Ganho";
         else if(req.body.ganho !== "on")
@@ -64,8 +81,16 @@ module.exports = {
        let enviaConversao;
        enviaConversao = converter;
        //nao_convertido = "";
+          let pegaValor;
+       // insere na tabela conversão com um insert automatico
+       pegaValor =  req.body.valor_original = req.body.valor; // para poder pegar dados de outras tabelas tem que inserir fazer o insert Conversao.create(req.body);
 
-       // insere na tabela conversão com um insert manual
+       console.log("Valor dá Conversão" + pegaValor);
+       req.body.valor_convertido = converter;
+        Conversao.create(req.body);
+
+        
+       
         }
         else if(req.body.dolar !== "on")
         {
@@ -75,6 +100,7 @@ module.exports = {
           console.log(nao_convertido);
           converter = 0;
         }
+
         if(req.body.Porcentagem !== "")
         {
           porcentagem = req.body.sim_porcentagem;
@@ -96,11 +122,13 @@ module.exports = {
         // e eu posso criar um atributo saldo no banco para armazenar a soma e ai usar o atributo
      //  console.log(soma +"\n");
         //global.connection.collection("elementosHoje").insertOne();
+
+        //nomeUsuario = req.body.username;
+
+       // console.log("Nome do Usuario"+nomeUsuario);
          res.redirect("/");
+
     },
-   
-  
-      
-         
+
    
 }

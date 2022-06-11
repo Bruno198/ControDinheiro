@@ -32,6 +32,9 @@ Conversao.init(connection);
 Porcentagem.init(connection);
 User.init(connection);
 
+Categoria.associate(connection.models);
+
+Lancamentos.associate(connection.models);
 
 
 

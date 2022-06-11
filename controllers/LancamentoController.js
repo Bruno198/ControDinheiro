@@ -1,6 +1,6 @@
 const Lancamentos = require("../models/Lancamentos");
 const Limite = require("../models/Limite");
-const id_categoria = require("../models/categoriaList");
+const User = require("../models/User");
 
 let armazena_limite;
 module.exports = {
@@ -44,5 +44,6 @@ module.exports = {
        //  await Lancamentos.create(req.body);
       })
    }
+   
  
 }

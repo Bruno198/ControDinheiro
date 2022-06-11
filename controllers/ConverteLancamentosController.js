@@ -4,20 +4,22 @@ const Categoria = require("../models/Categoria");
 const Conversao = require("../models/Conversao");
 const LancamentoController = require("../controllers/LancamentoController");
 
-
-let valor_original = [] ,enviaConversao = [];
-let nenhuma_conversao;
+let data = new Date();
+let dia , mes , ano;
+let valo_converido;
 
 module.exports = {
 
    loadConverter (req, res) { 
-  
-      
-           
-     
-           res.render(__dirname+"/../views/ejs/converte", { listConverter: dataConverter ,  nenhuma_conversao  });
-          
-     
+      dia = data.getDate();
+      mes = data.getMonth();
+      ano = data.getFullYear();
+       req.body.valo_converido = req.body.valor;
+        Conversao.findAll().then((dataConvert) => {
+          res.render(__dirname+"/../views/ejs/converte", { listconvert : dataConvert , dia , mes , ano});
+        
+        })
+   
            
       }
    } 

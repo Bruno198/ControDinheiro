@@ -38,6 +38,10 @@
                   <li class="nav-item"></li>
                       <a class="nav-link" href="/converte">Conversãos</a>
                     </li>
+
+                    <li class="nav-item"></li>
+                    <a class="nav-link" href="/login">Login</a>
+                  </li>
               
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="/salvaPesquisa" method="post">
@@ -64,7 +68,11 @@
       <div class="container">
         <h1 class="display-4">ControDinheiro</h1>
         <p class="lead">Gerencie seu Dinheiro</p>
-        <p>Bem Vindo (a)</p>
+        <% if(temp == 1 ){%>
+          <p><%= msg_logar%></p>
+          <% }%>
+      
+        <p>Bem Vindo: <%= nomeUsuario%></p>
         <p>Seu Saldo :<%=soma%></p>
        <!-- Botão para acionar modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_limite">
@@ -98,7 +106,46 @@
     </div>
   </div>
 </div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_usuario">
+  Cadastre se
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="modal_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5><br>
+      
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/saveUsuario" method="POST">
+          <div class="form-group">
+            <label for="form_categorias">Nome</label><br>
+            <input type="text"  id="usuarioNome" name="usuarioNome" placeholder="Informe o Limite">
+            <label for="form_categorias">Sobrenome</label><br><br>
+            <input type="text"  id="usuarioSobrenome" name="usuarioSobrenome" placeholder="Informe o Limite">
+            <label for="form_categorias">Email</label><br><br>
+            <input type="text"  id="email" name="email" placeholder="Informe o Limite">
+            <label for="form_categorias">Telefone</label><br>
+            <input type="text"  id="telefone" name="telefone" placeholder="Informe o Limite">
+            <label for="form_categorias">senha</label><br>
+            <input type="text"  id="senha" name="senha" placeholder="Informe o Limite">
+
+          </div>
+          <button type="submit" class="btn btn-primary" >Concluido</button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_porcentagem">
  Porcentagem
 </button>
@@ -133,6 +180,7 @@
 
       </div>
     </div>
+   
     <% if(converter > 0){%>
       <p>Valor <%= "R$" + salvaSaldo%> Convertido em Dolar: <%=" US$ "+ converter%></p>
       <% }%>
@@ -151,7 +199,7 @@
           <th scope="col">Data</th>
           <th scope="col">Tipo de Lançamento</th>
           <th scope="col">Categoria</th>
-          <th scope="col">Limite</th>
+        
         </tr>
       </thead>
       <% list.forEach( element => {%>
@@ -159,17 +207,18 @@
           <td><%= "R$" + element.valor %> </td>
           <td><%= element.data_lancamento %></td>
           <td><%= element.ganho ? "+ Ganho" : "- Gasto"%></td>
-          <td><%= element.select_novo %> </td>
-          <td><%=  element.limite  %>  </td>
+          <td> <%= element.select_novo%> </td>
+     
+
+         
       </tr>
-      <% });%>   
+      <% });%>  
     </table>
     <% }%>
     
     </div>
 
-    
-
+   
     
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->

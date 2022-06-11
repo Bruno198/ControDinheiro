@@ -18,6 +18,7 @@ const { loadIndex } = require("./controllers/IndexController");
 const { loadDolar } = require("./controllers/ConverteLancamentosController");
 const PorcentagemController = require("./controllers/PorcentagemController");
 const UsuarioController = require("./controllers/UsuarioController");
+const { root } = require("./controllers/UsuarioController");
 
 
 
@@ -53,21 +54,38 @@ app.get("/logout", (req, res) =>{
     req.logOut((err) =>{console.log(err);});
     res.redirect('/');
 });
+//se n foi feito o login
+//mostro só a pagina inicial
 
-app.get("/" , IndexController.loadIndex);// chamando lancamentos
-app.get("/converte" , convertLancamentosController.loadConverter);
-app.get("/categoria" , CategoriaController.loadCategoria);
-app.get("/lancamento" , LimiteController.loadLimit);
-app.get("/limite" , LimiteController.loadLimit);
-app.get("/lancamento" , LancamentoController.listaCategoria);
+//se deu certo mostro todas paginas
+//if(!rootPath)
+//{
+  //  app.get("/" , IndexController.loadIndex);
+//}
+//else{
+ let root_novo = 0;
+   if(root_novo == 0)
+        app.get("/" , IndexController.loadIndex);// chamando lancamentos
+        root_novo++;
+    // if(root == 1){
+        app.get("/" , IndexController.loadIndex);// chamando lancamentos
+        app.get("/converte" , convertLancamentosController.loadConverter);
+        app.get("/categoria" , CategoriaController.loadCategoria);
+        app.get("/lancamento" , LimiteController.loadLimit);
+        app.get("/limite" , LimiteController.loadLimit);
+        app.get("/" , UsuarioController.loadLogin);
 
-app.post("/salva", IndexController.saveLancamento);// salva os dados
-app.post("/salvaCategoria", CategoriaController.saveCategoria);
-app.post("/salvaLimite", LimiteController.saveLimite);
-app.post("/savePorcentagem", PorcentagemController.savePorcentagem);
-app.post("/saveUsuario", UsuarioController.saveUsuario);
-//app.post("/salva", convertLancamentosController.saveLancamentodolar);// salva os dados
-
+        app.post("/salva", IndexController.saveLancamento);// salva os dados
+        app.post("/salvaCategoria", CategoriaController.saveCategoria);
+        app.post("/salvaLimite", LimiteController.saveLimite);
+        app.post("/savePorcentagem", PorcentagemController.savePorcentagem);
+        app.post("/saveUsuario", UsuarioController.saveUsuario);
+//app.get("/lancamento" , LancamentoController.listaCategoria);
+  //  }
+   
+    
+    //app.post("/salva", convertLancamentosController.saveLancamentodolar);// salva os dados
+   
 app.get("/", authenticationMiddleware, (req, res) => {
     console.log(__dirname + "/../html/index.html");
     res.sendFile(
@@ -83,15 +101,8 @@ app.get('*', (req, res)=>{
 });
 
 
-
-
-
-
-
-
-
-
 const server =  app.listen(8080, function(){
+    root_novo = 0;
     console.log("Running");
     console.log("Chaamou");
 });

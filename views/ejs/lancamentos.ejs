@@ -67,23 +67,14 @@
                     <input type="radio" class="form-check-input" id="nao_porcentagem"name="nao_porcentagem"><br>
 
 
-
-
-              <!--if(listLimite.forEach(element => {
-                vetor_limite[i] = element.limite;-->
-                
-                  <% if(listLancamento.length > 0)( element => {%>
-                    if(element.valor > element.limite")
-                    <p><%= "Seu valor limite é de " + element.limite %></p>
-                  <% });%>   
                
                 
                 
               
              <label for="data">Categoria</label><br>
                 <select name="select_novo" id="select_novo">
-                  <% listLancamento.forEach( element => {%>
-                  <option value="<%= element.id_categoria%>"><%= element.categoria%></option>
+                  <% listCategoria.forEach( element => {%>
+                  <option value="<%= element.id%>"><%= element.categoria%></option>
                   <% });%>
                 </select>
                 
@@ -91,7 +82,7 @@
                 <%if(valor_lancamento > armazena_limite) {%>
                 <p><%= utrapassou_limite %></p>
                 <% }%>
-                  <button type="submit" class="btn btn-primary"  >Lançar</button>
+                  <button type="submit" class="btn btn-primary" onclick="login_automatico()">Lançar</button>
            
           </form>
 
@@ -99,6 +90,7 @@
     
    
     </div>
+    
     
     
        <!--<script src="/script.js"></script>-->

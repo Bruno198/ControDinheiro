@@ -8,13 +8,16 @@ const { Model, DataTypes } = require('sequelize');
         gasto: DataTypes.STRING ,
         valor: DataTypes.INTEGER ,
         data_lancamento: DataTypes.DATE ,
-        id_categoria: DataTypes.INTEGER ,
-        saldo: DataTypes.STRING
+        id_categoria: DataTypes.STRING ,
+        select_novo: DataTypes.STRING 
+      
+    
     }, {sequelize: connection, timestamps: false});
   }
   static associate(models){
-    this.belongsToone(models.Categoria, {foreignKey: "categoria_id", as: "lancamentos_categorizados"});
+    this.belongsTo(models.Categoria, {foreignKey: "id_categoria", as: "categoria"});
   }
+ 
 };
 
 module.exports = Lancamentos;

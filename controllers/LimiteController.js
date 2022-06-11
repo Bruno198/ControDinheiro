@@ -1,6 +1,7 @@
 
 const Limite = require("../models/Limite");
 const Lancamentos = require("../models/Lancamentos");
+const Categoria = require("../models/Categoria");
 
 let armazena_limite;
 let utrapassou_limite;
@@ -20,9 +21,10 @@ module.exports = {
     },
     loadLimit (req, res) {
         Lancamentos.findAll().then((data) => {// para fazer join includi e o nome dá tabela que eu quero fazer join
+          Categoria.findAll().then((dataCategoria) => {
+           
           
-          
-            res.render(__dirname+"/../views/ejs/lancamentos", {armazena_limite , listLancamento:data , utrapassou_limite , valor_lancamento});
+            res.render(__dirname+"/../views/ejs/lancamentos", { listCategoria: dataCategoria ,  armazena_limite , listLancamento:data , utrapassou_limite , valor_lancamento});
             //console.log("LListouCategoria\n\n\n");
          
           if(req.body.limite === "");
@@ -32,7 +34,7 @@ module.exports = {
             utrapassou_limite = "Voçe utrapassou o Limite Informe um valor Menor";
           
         
-         
+          });
         });
         
   }
