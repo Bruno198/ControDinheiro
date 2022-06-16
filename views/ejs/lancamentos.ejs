@@ -74,7 +74,7 @@
              <label for="data">Categoria</label><br>
                 <select name="select_novo" id="select_novo">
                   <% listCategoria.forEach( element => {%>
-                  <option value="<%= element.id%>"><%= element.categoria%></option>
+                  <option value="<%= element.id%>"><%= element.categoria%></option><!--Faz essa mesma coisa para mostra no index  mas eu tenho q relacionar categoria para lancamentos-->
                   <% });%>
                 </select>
                 

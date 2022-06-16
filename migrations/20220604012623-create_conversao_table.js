@@ -14,10 +14,7 @@ module.exports = {
       },
       valor_convertido: {
         type: Sequelize.INTEGER
-      },
-      data_da_conversao: {
-        type: Sequelize.INTEGER
-      },
+      }
     });
   },
 

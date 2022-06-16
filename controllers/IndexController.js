@@ -11,17 +11,19 @@ let soma  = 0;
 let converter , flag = 0 , novoGanho , nao_convertido;
 let conversaos_dolar = [];
 let coveter_dolar , porcentagem , nomeUsuario , temp = 3 , msg_logar;
+let id_lancamento;
 module.exports = {
 
     loadIndex (req, res) {
         Lancamentos.findAll().then((data) => {       
+          soma = 0;
           Categoria.findAll().then((dataCategoria) => {
            
               console.log("foi\n\n\n");
                    msg_logar = "Faça Login Para Continuar Usando o Contro Dinheiro";
                 
          
-                    res.render(__dirname+"/../views/ejs/index", { listCategoria : dataCategoria, list : data , Lancamentos : Lancamentos  , soma ,categoriaList :data  , converter , flag , listconvert :data ,salvaSaldo , novoGanho , nao_convertido , coveter_dolar  , nomeUsuario , msg_logar , temp});
+                    res.render(__dirname+"/../views/ejs/index", { listCategoria : dataCategoria, list : data , Lancamentos : Lancamentos  , soma ,categoriaList :data  , converter , flag , listconvert :data ,salvaSaldo , novoGanho , nao_convertido , coveter_dolar  , nomeUsuario , msg_logar , temp , id_lancamento});
                   //  await Lancamentos.create(req.body);
                   
                   // root = -1;
@@ -62,9 +64,15 @@ module.exports = {
         let soma2 = 0;
        
         console.log("Salvou Saldo "+ salvaSaldo+"\n\n\n");
-        
-        if(req.body.ganho === "on")
-          (soma) = soma +  parseInt(salvaSaldo) ;
+        //for(let i = 0; i < list.length; i++)
+        //{
+          //if(req.body.ganho === "on")
+          //(soma) = soma +  parseInt(salvaSaldo) ;
+         // else if(req.body.ganho !== "on")
+          //soma = soma - parseInt(salvaSaldo) ;
+        //}
+
+       
            // talves tenha q converter soma para string
          console.log(soma);
 
@@ -116,7 +124,7 @@ module.exports = {
        //pega_porcentagem = "Nenhuma Porcentagem";
         
        
-         let insert = "insert into conversaos (valor_original , valor_convertido , data_da_conversao) values(enviaConversao , valor_original)";
+        // let insert = "insert into conversaos (valor_original , valor_convertido , data_da_conversao) values(enviaConversao , valor_original)";
          
         // quando eu fizer o one to many para o lancamentos eu consigo usar o nome do model.o atributo do bancco
         // e eu posso criar um atributo saldo no banco para armazenar a soma e ai usar o atributo

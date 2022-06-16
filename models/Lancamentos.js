@@ -10,6 +10,7 @@ const { Model, DataTypes } = require('sequelize');
         data_lancamento: DataTypes.DATE ,
         id_categoria: DataTypes.STRING ,
         select_novo: DataTypes.STRING 
+       
       
     
     }, {sequelize: connection, timestamps: false});
