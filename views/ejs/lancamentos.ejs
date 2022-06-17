@@ -47,26 +47,30 @@
         <form action="/salva" method="POST">
             <div class="form-group">
               <label for="form_lancamento">Tipo de Lançamento</label><br>
-              <label class="form-check-label"> Ganho</label>
-              <input type="radio" class="form-check-input" id="ganho"name="ganho"><br>
-              <label class="form-check-label">Gasto</label>
-              <input type="radio" class="form-check-input" id="gasto"name="gasto"><br>
+              <div class="form-check">
+                <input class="form-check-input position-static" type="checkbox" id="ganho"  name="ganho"> Ganho
+              </div>
+              <div class="form-check">
+                <input class="form-check-input position-static" type="checkbox" id="gasto"  name="gasto"> Gasto
+              </div>
               <label for="form_lancamento">Valor de Lançamento</label><br>
               <input type="number" step="0.01" id="valor" name="valor" placeholder="Seu Lançamento"><br>
             
+              
               <label for="form_lancamento">Data do Lançamento</label><br>
               <input type="date"  id="data_lancamento" name="data_lancamento"><br>
               <label for="form_lancamento">Converter para dolar ?</label><br><brr>
-                <label for="form_lancamento">Sim</label><br>
-                <input type="radio" class="form-check-input" id="dolar"name="dolar"><br>
-                <label for="form_lancamento">Não</label><br>
-                <input type="radio" class="form-check-input" id="nao_converter"name="nao_converter"><br>
-                <label for="form_lancamento">Voçe aplicou uma porcentagem</label><br>
-                <label for="form_lancamento">Sim</label><br>
-                    <input type="radio" class="form-check-input" id="sim_porcentagem"name="sim_porcentagem"><br>
-                    <label for="form_lancamento">Não</label><br>
-                    <input type="radio" class="form-check-input" id="nao_porcentagem"name="nao_porcentagem"><br>
-                    
+                <div class="form-converter">
+                  <input class="form-check-input position-static" type="checkbox" id="dolar"  name="dolar"> Sim
+                </div>
+                <div class="form-converter">
+                  <input class="form-check-input position-static" type="checkbox" id="nao_converter"  name="nao_converter"> Não
+                </div><br>
+                <label for="form_lancamento"> Voçe Quer Aplicar Alguma Porcentagem no Lancamento</label><br>
+                <input type="number" step="0.01" id="porcentagem" name="porcentagem" placeholder="Deixe Vazio se não quer"><br>
+               
+
+               
                     <div class="modal fade" id="modal_validacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -121,7 +125,7 @@
                 <textarea id="descricao" name="descricao"rows="5" cols="50"  placeholder=" Descreva Seu Lançamento"></textarea><br>
 
                   <button type="submit" class="btn btn-primary" onclick="Modal()">Lançar</button>
-           
+                </div>
           </form>
 
    

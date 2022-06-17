@@ -12,6 +12,7 @@ let converter , flag = 0 , novoGanho , nao_convertido;
 let conversaos_dolar = [];
 let coveter_dolar , porcentagem , nomeUsuario , temp = 3 , msg_logar;
 let id_lancamento;
+let pega_porcentagem;
 module.exports = {
 
     loadIndex (req, res) {
@@ -108,16 +109,13 @@ module.exports = {
           converter = 0;
         }
 
-        if(req.body.Porcentagem !== "")
+        if(req.body.porcentagem  > 0)
         {
-          porcentagem = req.body.sim_porcentagem;
-          let pega_porcentagem;
-          let Convert_para_porcentagem;
-          //como converter o 20 para 0,020
-          porcentagem = req.body.porcentagem;
-         // Convert_para_porcentagem = (porcentagem / 100) / req.body.valor;
-          //Convert_para_porcentagem = (porcentagem / 100) / 100;
-          pega_porcentagem =  req.body.valor * Convert_para_porcentagem;
+          req.body.porcentagem_do_db = req.body.porcentagem;
+          req.body.valor_do_lancamento = req.body.valor;
+          pega_porcentagem = req.body.porcentagem / 100;
+          req.body.porcentagem_calculada = pega_porcentagem * req.body.valor;
+          Porcentagem.create(req.body);
         }
        //else if(req.body.nao_porcentagem)
        //pega_porcentagem = "Nenhuma Porcentagem";

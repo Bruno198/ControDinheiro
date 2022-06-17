@@ -74,11 +74,13 @@ app.get("/logout", (req, res) =>{
         app.get("/lancamento" , LimiteController.loadLimit);
         app.get("/limite" , LimiteController.loadLimit);
         app.get("/" , UsuarioController.loadLogin);
+        app.get("/porcentagem" , PorcentagemController.loadPorcentagem);
+
 
         app.post("/salva", IndexController.saveLancamento);// salva os dados
         app.post("/salvaCategoria", CategoriaController.saveCategoria);
         app.post("/salvaLimite", LimiteController.saveLimite);
-        app.post("/savePorcentagem", PorcentagemController.savePorcentagem);
+        //app.post("/savePorcentagem", PorcentagemController.savePorcentagem);
         app.post("/saveUsuario", UsuarioController.saveUsuario);
 //app.get("/lancamento" , LancamentoController.listaCategoria);
   //  }
