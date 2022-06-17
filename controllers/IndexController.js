@@ -16,7 +16,6 @@ module.exports = {
 
     loadIndex (req, res) {
         Lancamentos.findAll().then((data) => {       
-          soma = 0;
           Categoria.findAll().then((dataCategoria) => {
            
               console.log("foi\n\n\n");
@@ -134,6 +133,7 @@ module.exports = {
         //nomeUsuario = req.body.username;
 
        // console.log("Nome do Usuario"+nomeUsuario);
+
          res.redirect("/");
 
     },

@@ -10,11 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       valor_original: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       valor_convertido: {
-        type: Sequelize.INTEGER
-      }
+        type: Sequelize.FLOAT
+      },
+     
     });
   },
 

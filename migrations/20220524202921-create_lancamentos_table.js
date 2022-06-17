@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       valor: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       data_lancamento: {
         type: Sequelize.DATE
@@ -36,6 +36,9 @@ module.exports = {
 
       select_novo: {
         type: Sequelize.STRING
+      } ,
+      descricao: {
+        type: Sequelize.TEXT
       }
 
       

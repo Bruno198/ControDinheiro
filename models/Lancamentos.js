@@ -6,10 +6,11 @@ const { Model, DataTypes } = require('sequelize');
     super.init({
         ganho: DataTypes.STRING,
         gasto: DataTypes.STRING ,
-        valor: DataTypes.INTEGER ,
+        valor: DataTypes.FLOAT ,
         data_lancamento: DataTypes.DATE ,
         id_categoria: DataTypes.STRING ,
-        select_novo: DataTypes.STRING 
+        select_novo: DataTypes.STRING ,
+        descricao: DataTypes.TEXT
        
       
     

@@ -171,6 +171,7 @@
           <th scope="col">Data</th>
           <th scope="col">Tipo de Lançamento</th>
           <th scope="col">Categoria</th>
+          <th scope="col">Descrição</th>
         
         </tr>
       </thead>
@@ -179,7 +180,8 @@
           <td><%= "R$" + element.valor %> </td>
           <td><%= element.data_lancamento %></td>
           <td><%= element.ganho ? "+ Ganho" : "- Gasto"%></td>
-          <td> <%= id_lancamento %> </td>
+          <td> <%= element.select_novo %> </td>
+          <td> <%= element.descricao %> </td>
    
          <!--Relacionar categorias com elemento-->
 
