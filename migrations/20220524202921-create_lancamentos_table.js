@@ -19,8 +19,10 @@ module.exports = {
         type: Sequelize.FLOAT
       },
       data_lancamento: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
+
+     // colocar date DATEONLY
       id_categoria: {
         type: Sequelize.INTEGER ,
         type: Sequelize.DataTypes.INTEGER,

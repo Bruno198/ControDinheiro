@@ -7,7 +7,7 @@ const { Model, DataTypes } = require('sequelize');
         ganho: DataTypes.STRING,
         gasto: DataTypes.STRING ,
         valor: DataTypes.FLOAT ,
-        data_lancamento: DataTypes.DATE ,
+        data_lancamento: DataTypes.DATEONLY ,
         id_categoria: DataTypes.INTEGER ,
         descricao: DataTypes.TEXT
        

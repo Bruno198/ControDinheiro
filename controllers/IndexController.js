@@ -16,11 +16,14 @@ let coveter_dolar, porcentagem, nomeUsuario, temp = 3, msg_logar;
 let id_lancamento;
 let pega_porcentagem;
 let dataFomatada = [], data_do_db, mais, dataconvertida;
+let data = new Date();
+let dia, mes, ano;
 module.exports = {
 
   loadIndex(req, res) {
-
+    
     Lancamentos.findAll().then((data) => {
+  
       Categoria.findAll().then((dataCategoria) => {
 
         console.log("foi\n\n\n");
@@ -37,6 +40,7 @@ module.exports = {
   async saveLancamento(req, res) {
 
     //res.render(__dirname+"/../views/ejs/index", {seusaldo : soma}); verificar se assim consigo motrar a mensagem dá soma
+    
     await Lancamentos.create(req.body);
     console.log("SalvouLancamentos\n\n\n");
 
@@ -90,11 +94,17 @@ module.exports = {
       Porcentagem.create(req.body);
     }
 
+
+    req.body.data_lancamento = moment(req.body.data_lancamento).format("DD/MM/YYYY");
+    console.log("Converteu a data Formatou ?" + req.body.data_lancamento);
+
+    
     // {
     //dataFomatada = moment(req.body.data_lancamento).format("DD/MM/YYYY");
     // for (var i = 0; i < dataFomatada.length; i++)
     //{
-    dataFomatada = moment(req.body.data_lancamento).format("DD/MM/YYYY");
+    //dataFomatada = moment(req.body.data_lancamento).format("DD/MM/YYYY");
+    
     // res.body.data_lancamento = data_do_db;
     //  console.log("A data  é " +  dataFomatada[i]);
     //}
