@@ -7,9 +7,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link rel="stylesheet icon" href="/imagens/cifão.png">
   </head>
   <body>
     <h1>ControDinheiro</h1>
@@ -17,7 +18,7 @@
     <div class="container">
       <div class="row">
           <div class="col">
-            
+            <center></center>
             <nav class="navbar navbar-expand-lg navbar-light bg-Grey">
               <a class="navbar-brand" href="">ControDinheiro</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,22 +48,7 @@
                 </li>
               
                 </ul>
-                <form class="form-inline my-2 my-lg-0" action="/salvaPesquisa" method="post">
-                  <div class="form-group">
-                  <input   id="pesquisa" name="pesquisa"class="form-control mr-sm-2" type="search"  placeholder="Pesquisar" aria-label="Search" list="pesquisa">
-                  <button> Pesquisar</a></button>
-                </div>
-                  
-                  <datalist id="pesquisa">
-                    <% list.forEach( element => {%>
-                    <option value="<%= element.valor %>"> </option>
-                    <option value="<%= element.data_lancamento %>"> </option>
-                    <option value="<%= element.ganho %>"> </option>
-                    <option value="<%= element.select_novo %>"> </option>
-                    <option value="<%= element.limite %>"> </option>
-                    <% });%> 
-                  </datalist>
-                </form>
+                
               </div>
             </nav>
     </div>
@@ -75,7 +61,7 @@
           <p><%= msg_logar%></p>
           <% }%>
       
-        <p>Bem Vindo: <%= soma%></p>
+        <p>Bem Vindo: <%= nomeUsuario%></p>
         <%soma = 0;%>
         <% list.forEach( element => {%>
           <% if(element.ganho === "on"){%>
@@ -118,39 +104,6 @@
     </div>
   </div>
 </div>
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_porcentagem">
- Porcentagem
-</button>
-<div class="modal fade" id="modal_porcentagem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalporcentagem">Porcentagem de Lancamentos</h5><br>
-       
-        <p>Quanto voçe quer de porcentagem de 20 a 100%</p><br>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="/savePorcentagem" method="POST">
-          <div class="form-group">
-            
-            <label for="form_categorias">Informe aqui</label><br>
-            <input type="text"  id="porcentagem" name="porcentagem" placeholder="Informe a Porcentagem">
-          </div>
-          <button type="submit" class="btn btn-primary" >Concluido</button>
-        </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
       </div>
     </div>
    
@@ -176,23 +129,26 @@
           <th scope="col">Categoria</th>
           <th scope="col">Descrição</th>
         
+        
         </tr>
       </thead>
       <% list.forEach( element => {%>
         <tr>
           <td><%= "R$" + element.valor %> </td>
-          <td><%= element.data_lancamento %></td>
+          <td><%=dataFomatada%></td>
           <td><%= element.ganho ? "+ Ganho" : "- Gasto"%></td>
-          <td> <%= element.select_novo %> </td>
+          <td><%= element.id_categoria%></td><!--Faz essa mesma coisa para mostra no index  mas eu tenho q relacionar categoria para lancamentos-->
           <td> <%= element.descricao %> </td>
-   
          <!--Relacionar categorias com elemento-->
 
          
       </tr>
       <% });%>  
+      
     </table>
     <% }%>
+    
+  
     
     </div>
 

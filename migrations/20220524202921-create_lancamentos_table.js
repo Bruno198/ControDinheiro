@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       id_categoria: {
-        type: Sequelize.STRING ,
+        type: Sequelize.INTEGER ,
         type: Sequelize.DataTypes.INTEGER,
         references: {
           model: {
@@ -33,10 +33,7 @@ module.exports = {
         }
       
       },
-
-      select_novo: {
-        type: Sequelize.STRING
-      } ,
+      
       descricao: {
         type: Sequelize.TEXT
       }

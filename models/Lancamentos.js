@@ -8,8 +8,7 @@ const { Model, DataTypes } = require('sequelize');
         gasto: DataTypes.STRING ,
         valor: DataTypes.FLOAT ,
         data_lancamento: DataTypes.DATE ,
-        id_categoria: DataTypes.STRING ,
-        select_novo: DataTypes.STRING ,
+        id_categoria: DataTypes.INTEGER ,
         descricao: DataTypes.TEXT
        
       

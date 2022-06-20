@@ -14,7 +14,7 @@ module.exports = {
       },
       valor_convertido: {
         type: Sequelize.FLOAT
-      },
+      }
      
     });
   },

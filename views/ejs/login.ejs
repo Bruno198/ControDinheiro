@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
+  <%- include("./partials/header") %>
   <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
@@ -55,11 +56,11 @@
   
             <center>
               <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="ControDinheiro">
+              
                 <div class="card-body">
-        
               <form action="/login" method="POST">
-                <h1>Login</h1>
+                <h3 style="color:rgb(255,215,0)">ControDinheiro</h3>
+                <img class="card-img-top" src="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2019/09/afinal-qual-e-a-origem-do-cifrao-quem-o-inventou-1.jpg" alt="ControDinheiro">
                 <fieldset> 
                   <br>
                   <input name="username" type="text" placeholder="Informe o seu nome"><br><Br>
@@ -69,6 +70,7 @@
                  
                   </fieldset>
               </form>
+              </div>
             <% if(message) { %>
               <p>
                 <label style="color:Red"><%= message %></label>

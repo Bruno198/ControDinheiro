@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <%- include("./partials/header") %>
   <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
@@ -29,6 +30,15 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/lancamento">Lancamento</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/converte">Converter</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/porcentagem">Porcentagems</a>
+                  </li>
                  
               
                 </ul>
@@ -43,8 +53,8 @@
    
      
         <form action="/salvaCategoria" method="POST">
-            <div class="form-group">
-              <label for="form_categorias">Categorias</label><br>
+            <div class="form-group ">
+              <label for="form_categorias" class="col-sm-2 col-form-label">Categorias</label><br>
               <input type="text"  id="categoria" name="categoria" placeholder="Informe A Categoria de Lançamento">
             </div>
     

@@ -2,7 +2,7 @@ const mongoClient = require("mongodb").MongoClient;
 
 const uri = "mongodb+srv://admin:h2=a2+b2@cluster0.9twgo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-const client = mongoClient.connect(uri, {useUnifiedTopology: true }, (error, connection) => {
+const client = mongoClient.connect(uri, { useUnifiedTopology: true }, (error, connection) => {
     if (error) {
         console.log("falha na conexão");
         return;
@@ -17,10 +17,10 @@ const configDb = require("./config/relationalDb");
 const Categoria = require("./models/Categoria");
 const Lancamentos = require("./models/Lancamentos");
 //const Lancamentos = require("./models/Lancamentos");
-const  Limite = require("./models/Limite");
-const  Conversao = require("./models/Conversao");
-const  Porcentagem = require("./models/Porcentagem");
-const  User = require("./models/User");
+const Limite = require("./models/Limite");
+const Conversao = require("./models/Conversao");
+const Porcentagem = require("./models/Porcentagem");
+const User = require("./models/User");
 
 const connection = new Sequelize(configDb);
 
