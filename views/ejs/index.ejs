@@ -137,7 +137,7 @@
           <td><%= "R$" + element.valor %> </td>
           <td><%=element.data_lancamento%></td>
           <td><%= element.ganho ? "+ Ganho" : "- Gasto"%></td>
-          <td><%= element.id_categoria%></td><!--Faz essa mesma coisa para mostra no index  mas eu tenho q relacionar categoria para lancamentos-->
+          <td value="<%= element.categoria%>"><%= element.id_categoria%></td><!--Faz essa mesma coisa para mostra no index  mas eu tenho q relacionar categoria para lancamentos-->
           <td> <%= element.descricao %> </td>
          <!--Relacionar categorias com elemento-->
       </tr>

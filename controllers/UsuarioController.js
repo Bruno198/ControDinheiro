@@ -6,6 +6,7 @@ const { use } = require("passport");
 
 let nomeUsuario, root = 0;
 let lognNome, msg_login;
+let logou = 0 , pega_usuario;
 module.exports = {
 
   async saveUsuario(req, res) {
@@ -15,7 +16,7 @@ module.exports = {
     lognNome = req.body.user_sobrenome;
     root = 1;
     console.log("Root" + root);
-
+    console.log("pegou id" + pega_usuario);
     res.redirect("/login");
   },
 
@@ -26,6 +27,8 @@ module.exports = {
       res.render("ejs/login", { message: 'Senha ou Login Errado!' });
 
     else {
+      logou = 1;
+      pega_usuario = user.id;
       res.render("ejs/login", { message: null });
       // res.redirect("*");
       //res.render(__dirname+"/../views/ejs/index", {list ,nomeUsuario});
@@ -36,12 +39,12 @@ module.exports = {
 
   },
 
-  root(req, res) {
-    if (root == 0)
-      root = -1;
+  //root(req, res) {
+    //if (root == 0)
+      //root = -1;
     //  res.render(__dirname+"/../views/ejs/categoria", {});
 
-  },
+  //},
 
   loadUsuario(req, res) {
     // User.findAll().then((data) => { 
@@ -54,6 +57,7 @@ module.exports = {
       }
       else {
         msg_login = "Bem Vindo";
+        logou = 0;
         res.render(__dirname + "/../views/ejs/index", { nomeUsuario: "select username from users where id=" + req.User.id, lognNome, msg_login });
       }
 

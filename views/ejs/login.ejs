@@ -14,46 +14,48 @@
 
   </head>
   <body>
-
-    <p>Não tem Login ?</p><br><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_usuario">
-      Cadastre - se
-    </button>
-    <div class="modal fade" id="modal_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5><br>
-          
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="/saveUsuario" method="POST">
-              <div class="form-group">
-                <label for="form_Usuario">Nome</label><br>
-                <input name="username" type="text" /><br />
-                <label for="form_Usuario">Sobrenome</label><br>
-                <input name="user_sobrenome" type="text" /><br />
-                <label for="form_Usuario">Email</label><br>
-                <input name="user_email" type="text" /><br />
-                <label for="form_Usuario">Número</label><br>
-                <input name="user_numero" type="text" /><br />
-                <label for="form_Usuario">senha</label><br><br>
-                <input name="password" type="password" /><br />
-              </div>
-              <button type="submit" class="btn btn-primary" >Cadastrar - se</button>
-            </form>
-    
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+    <center>
+      <p>Não tem Login ?</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_usuario">
+        Cadastre - se
+      </button>
+      <div class="modal fade" id="modal_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5><br>
+            
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="/saveUsuario" method="POST">
+                <div class="form-group">
+                  <label for="form_Usuario">Nome</label><br>
+                  <input name="username" type="text" /><br />
+                  <label for="form_Usuario">Sobrenome</label><br>
+                  <input name="user_sobrenome" type="text" /><br />
+                  <label for="form_Usuario">Email</label><br>
+                  <input name="user_email" type="text" /><br />
+                  <label for="form_Usuario">Número</label><br>
+                  <input name="user_numero" type="text" /><br />
+                  <label for="form_Usuario">senha</label><br><br>
+                  <input name="password" type="password" /><br />
+                </div>
+                <button type="submit" class="btn btn-primary" >Cadastrar - se</button>
+              </form>
+      
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  
-  
+    
+    </center>
+    
+  <Br></Br>
             <center>
               <div class="card" style="width: 18rem;">
               
@@ -76,31 +78,11 @@
                 <label style="color:Red"><%= message %></label>
               </p>
             <%}%>
-            </center>
-
+              
             <button type="button" class="btn btn-danger" >
               <a href="/">Voltar</a>
             </button>
-            <script>
-
-              function Lofin(){
-                var verifica = document.getElementById("loguei");
-               verifica = 1;
-              }
-              
-            
-            </script>
-           
-        
-          
-               
-             
-   
-   
-     
-   
-    
-
+            </center>
    
     
        <!--<script src="/script.js"></script>-->
