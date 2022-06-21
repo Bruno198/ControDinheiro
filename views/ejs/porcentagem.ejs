@@ -35,7 +35,7 @@
                     <a class="nav-link" href="/lancamento">Lancamento</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/converte">Converter</a>
+                    <a class="nav-link" href="/converte">Conversãos</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/login">login</a>
@@ -54,6 +54,7 @@
                   <th scope="col">Porcentagem Aplicada</th>
                   <th scope="col">Valor do Lancamento</th>
                   <th scope="col">Calcolo dá Porcentagem</th>
+                  <th scope="col">Data dá  Aplicação dá Porcentagem</th>
                  
                 </tr>
               </thead>
@@ -62,6 +63,7 @@
                   <td><%= element.porcentagem_do_db  + "%" %>  </td>
                   <td><%= " R$ " + element.valor_do_lancamento %> </td>
                   <td><%= " Porcentagem " + element.porcentagem_calculada %> </td>
+                  <td><%= element.data_porcentagem %> </td>
               </tr>
               <% });%>   
             </table>

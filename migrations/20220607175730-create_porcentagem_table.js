@@ -18,6 +18,9 @@ module.exports = {
       porcentagem_calculada: {
         type: Sequelize.FLOAT
       },
+      data_porcentagem: {
+        type: Sequelize.DATEONLY
+      },
     
     });
   },

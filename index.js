@@ -93,7 +93,6 @@ app.get('*', (req, res) => {
 
 
 const server = app.listen(8080, function () {
-    root_novo = 0;
     console.log("Running");
     console.log("Chaamou");
 });

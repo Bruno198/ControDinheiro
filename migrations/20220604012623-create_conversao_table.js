@@ -14,6 +14,9 @@ module.exports = {
       },
       valor_convertido: {
         type: Sequelize.FLOAT
+      } ,
+      data_da_convercao: {
+        type: Sequelize.DATEONLY
       }
      
     });

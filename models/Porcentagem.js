@@ -6,7 +6,8 @@ const { Model, DataTypes } = require('sequelize');
     super.init({
       porcentagem_do_db: DataTypes.FLOAT ,
       valor_do_lancamento: DataTypes.FLOAT ,
-      porcentagem_calculada: DataTypes.FLOAT
+      porcentagem_calculada: DataTypes.FLOAT , 
+      data_porcentagem: DataTypes.DATEONLY
     }, {sequelize: connection , timestamps: false});
   }
 };

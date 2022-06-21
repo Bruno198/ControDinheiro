@@ -76,7 +76,7 @@ module.exports = {
 
       console.log("Valor dá Conversão" + pegaValor);
       req.body.valor_convertido = converter;
-
+      req.body.data_da_convercao = req.body.data_lancamento;
       Conversao.create(req.body);
     }
     else if (req.body.dolar !== "on") {
@@ -92,13 +92,13 @@ module.exports = {
       req.body.valor_do_lancamento = req.body.valor;
       pega_porcentagem = req.body.porcentagem / 100;
       req.body.porcentagem_calculada = pega_porcentagem * req.body.valor;
+      req.body.data_porcentagem = req.body.data_lancamento;
       Porcentagem.create(req.body);
     }
 
     req.body.data_lancamento = moment(req.body.data_lancamento).format("mm/dd/yyyy");      
     console.log("Converteu a data Formatou ?" + req.body.data_lancamento);
-  
-
+    
     // {
     //dataFomatada = moment(req.body.data_lancamento).format("DD/MM/YYYY");
     // for (var i = 0; i < dataFomatada.length; i++)

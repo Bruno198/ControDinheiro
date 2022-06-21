@@ -38,8 +38,8 @@ module.exports = {
       
       descricao: {
         type: Sequelize.TEXT
-      }
-
+      } ,
+    
       
     });
   
