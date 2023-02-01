@@ -1,5 +1,5 @@
 const Categoria = require("../models/Categoria");
-const Lancamentos = require("../models/Lancamentos");
+const Lancamentos = require("../models/lancamentos");
 let root = 0 , armazenaRoot;
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
     async saveCategoria (req, res) { 
         await Categoria.create(req.body);
         //global.connection.collection("elementosHoje").insertOne();
-         res.redirect("/");
+         res.redirect("/home");
     },
 
    

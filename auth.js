@@ -29,6 +29,7 @@ module.exports = function(passport){
     (username, password, done) => {
         try {
             console.log(password);
+            console.log(username);
             return User.findOne({where: {
                 username: username
              }}).then((user) => {

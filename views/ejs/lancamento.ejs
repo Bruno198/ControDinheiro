@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <%- include("./partials/header") %>
   <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
@@ -8,15 +9,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+ 
   </head>
   <body>
-    <h2>Lançamentos</h2>
+    
    
     <div class="container">
       <div class="row">
           <div class="col">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="/">ControDinheiro</a>
+            <nav class="navbar navbar-expand-lg navbar-light bg-Grey">
+                <h2 style="font-size: 12;">Lançamentos</h2>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -24,63 +26,100 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                  </li>
+
+                  <li class="nav-item active">
                     <a class="nav-link" href="/categoria">Categoria <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="">Lancamento</a>
+                    <a class="nav-link" href="/converte">Converter</a>
                   </li>
-                 
-              
+                  <li class="nav-item">
+                    <a class="nav-link" href="/porcentagem">Porcentagems</a>
+                  </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-                </form>
+               
               </div>
             </nav>
     </div>
     </div>
    
-     
-        <form action="/salva" method="POST">
-            <div class="form-group">
-              <label for="form_lancamento">Tipo de Lançamento</label><br>
-              <label class="form-check-label"> Ganho</label>
-              <input type="radio" class="form-check-input" id="ganho"name="ganho"><br>
-              <label class="form-check-label">Gasto</label>
-              <input type="radio" class="form-check-input" id="gasto"name="gasto"><br>
-              <label for="form_lancamento">Valor de Lançamento</label><br>
-              <input type="number"  id="valor" name="valor" placeholder="Seu Lançamento"><br>
-              <label for="form_lancamento">Data do Lançamento</label><br>
-              <input type="date"  id="data_lancamento" name="data_lancamento"><br>
-              <!--if(listLimite.forEach(element => {
-                vetor_limite[i] = element.limite;-->
+    <p>Limite Cadastrado : <%=" R$ "+ armazena_limite %></p>
+   
+    <p id="bemvindo">Bem Vindo  : <%=nomouser %></p>
+  
+        
+          <form action="/salva" method="POST">
+         
+            <div class="form-group row">
+              <label for="InputValorLancamento" class="col-sm-2 col-form-label">Valor de Lançamento</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control"step="0.01" id="valor" name="valor" placeholder="Informe o Seu Lancamento">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="InputDataLancamento" class="col-sm-2 col-form-label">Data de Lançamento</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="data_lancamento" name="data_lancamento" placeholder="Informe a Data do Lancamento">
+              </div>
+            </div>
+            <fieldset class="form-group">
+              <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Tipo de Lancamento ?</legend>
+                <div class="form-check">
+                  <input class="form-check-input position-static" type="checkbox" id="ganho"  name="ganho"> Ganho
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input position-static" type="checkbox" id="gasto"  name="gasto"> Gasto
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+              <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Converter para Dolar ?</legend>
+                <div class="col-sm-10">
+                  <div class="form-converter">
+                    <input class="form-check-input position-static" type="checkbox" id="dolar"  name="dolar"> Sim
+                  </div>
+                  <div class="form-converter">
+                    <input class="form-check-input position-static" type="checkbox" id="nao_converter"  name="nao_converter"> Não
+                  </div><br>
                 
-                  <% if(listLancamento.length > 0)( element => {%>
-                    if(element.valor > element.limite")
-                    <p><%= "Seu valor limite é de " + element.limite %></p>
-                  <% });%>   
-               
-                
-                
-              
-             <label for="data">Categoria</label><br>
-                <select name="select_novo" id="select_novo">
-                  <% listLancamento.forEach( element => {%>
-                  <option ><%= element.categoria %></option>
+                </div>
+              </div>
+            </fieldset>
+            
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <label for="data">Categoria</label><br>
+                <select name="id_categoria" id="id_categoria">
+                  <% listCategoria.forEach( element => {%>
+                  <option value="<%= element.id%>"><%= element.categoria%></option><!--Faz essa mesma coisa para mostra no index  mas eu tenho q relacionar categoria para lancamentos-->
                   <% });%>
                 </select>
-
+                
                 <br><br>
-   
-                  <button type="submit" class="btn btn-primary" >Lançar</button>
-           
+                <%if(valor_lancamento > armazena_limite) {%>
+                <p><%= utrapassou_limite %></p>
+                <% }%>
+                <div class="form-group row">
+                  <label for="InputValorLancamento" class="col-sm-2 col-form-label"> Voçe Quer Aplicar Alguma Porcentagem no Lancamento ?</label><br>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control"step="0.01" id="porcentagem" name="porcentagem" placeholder="Deixe Vazio se não quer">
+                  </div>
+                </div>
+                
+                <label for="form_lancamento">Descrição do Lançamento</label><br>
+                <textarea id="descricao" name="descricao"rows="5" cols="50"  placeholder=" Descreva Seu Lançamento"></textarea><br><br>
+                <button type="submit" class="btn btn-primary" onclick="Modal()">Lançar</button>
+              </div>
+            </div>
           </form>
-
-   
-    
    
     </div>
+  
+    
     
     
        <!--<script src="/script.js"></script>-->

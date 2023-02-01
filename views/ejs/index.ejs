@@ -10,141 +10,85 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet icon" href="/imagens/cifão.png">
   </head>
-  <body>
-    <h1>ControDinheiro</h1>
-    
-    <div class="container">
-      <div class="row">
-          <div class="col">
-            <center></center>
-            <nav class="navbar navbar-expand-lg navbar-light bg-Grey">
-              <a class="navbar-brand" href="">ControDinheiro</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  
-                  <li class="nav-item active">
-                    <a class="nav-link" href="/categoria">Categoria <span class="sr-only">(current)</span></a>
-                  </li>
-                 
-                  <li class="nav-item">
-                    <a class="nav-link" href="/lancamento">Lancamento</a>
-                  </li>
-                
-                  <li class="nav-item"></li>
-                      <a class="nav-link" href="/converte">Conversãos</a>
-                    </li>
-
-                    <li class="nav-item"></li>
-                    <a class="nav-link" href="/login">Login</a>
-                  </li>
-                  <li class="nav-item"></li>
-                  <a class="nav-link" href="/porcentagem">Porsentagems</a>
-                </li>
-              
-                </ul>
-                
-              </div>
-            </nav>
-    </div>
-    </div>
-    <div class="jumbotron jumbotron-fluid">
+  <br><br>
+  <center>
+    <body>
       <div class="container">
-        <h1 class="display-4">ControDinheiro</h1>
-        <p class="lead">Gerencie seu Dinheiro</p>
-        <% if(temp == 1 ){%>
-          <p><%= msg_logar%></p>
-          <% }%>
-      
-        <p>Bem Vindo: <%= nomeUsuario%></p>
-        <%soma = 0;%>
-        <% list.forEach( element => {%>
-          <% if(element.ganho === "on"){%>
-            <% soma += element.valor; %>
-            <% }%>
-            <% if(element.ganho !== "on"){%>
-              <% soma = soma -  element.valor; %>
-              <% }%>
-          <% });%>  
-          <%= "Soma/Saldo: "+  soma%>
-          <br><br>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_limite">
-  Limite de Lançamentos
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="modal_limite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Limte seus Gastos</h5><br>
-        <p>Esté Limite só sera Aplicado nos seus Gastos</p><br>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
+    
+         <img src="https://i.pinimg.com/474x/9c/3e/01/9c3e0178278d01c8e9c45029bb9015b2.jpg" alt="ControDinheiro">
+          <h1 style="font-size: 30;">ControDinheiro</h1>
+          <h3 style="color: black;">Gerencie seus Gastos e Ganhos</h3>
+        <button type="button" class="btn btn-success" onclick="Login()">Entrar
         </button>
+        <button type="button"class="btn btn-danger" data-toggle="modal" data-target="#modal_usuario"  >Não tem Login Cadatre-se
+        </button>
+        
       </div>
-      <div class="modal-body">
-        <form action="/salvaLimite" method="POST">
-          <div class="form-group">
-            <label for="form_categorias">Limite de Gastos ?</label><br>
-            <input type="text"  id="limite" name="limite" placeholder="Informe o Limite">
+  </center>
+  <center>
+    <div class="modal fade" id="modal_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5><br>
+          
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <button type="submit" class="btn btn-primary" >Concluido</button>
-        </form>
+          <div class="modal-body">
+            <form action="/saveUsuario" method="POST">
+              <div class="form-group">
+                <label for="form_Usuario">Nome</label><br>
+                <input name="username" type="text" /><br />
+                <label for="form_Usuario">Sobrenome</label><br>
+                <input name="user_sobrenome" type="text" /><br />
+                <label for="form_Usuario">Email</label><br>
+                <input name="user_email" type="text" /><br />
+                <label for="form_Usuario">Número</label><br>
+                <input name="user_numero" type="text" /><br />
+                <label for="form_Usuario">senha</label><br><br>
+                <input name="password" type="password" /><br />
+              </div>
+              <button type="submit" class="btn btn-primary" >Cadastrar - se</button>
+            </form>
+    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </center>
+  <script>
+    function Login(){
+      window.location.href = "http://localhost:8080/login"
+    }
+  </script>
+ 
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-      </div>
-    </div>
-   
-    <% if(converter > 0){%>
-      <p>Valor <%= "R$" + salvaSaldo%> Convertido em Dolar: <%=" US$ "+ converter%></p>
-      <% }%>
-      <% if(coveter_dolar !== "on"){%>
-        <p> <%= nao_convertido%></p>
-        <% }%>
-    <!-- <% if(converter !== "on"){%>
-        <p> <%= converter%></p>
-        <% }%>--> 
-        
-
-    <% if (list.length  > 0) {%>
-      <p>Tabela de Lançamentos</p>
-    <table class="table table-striped table-dark">
-      <thead>
-        <tr>
-          <th scope="col">Valor</th>
-          <th scope="col">Data</th>
-          <th scope="col">Tipo de Lançamento</th>
-          <th scope="col">Categoria</th>
-          <th scope="col">Descrição</th>
-        
-        
-        </tr>
-      </thead>
-      <% list.forEach( element => {%>
-        <tr>
-          <td><%= "R$" + element.valor %> </td>
-          <td><%=element.data_lancamento%></td>
-          <td><%= element.ganho ? "+ Ganho" : "- Gasto"%></td>
-          <td value="<%= element.categoria%>"><%= element.id_categoria%></td><!--Faz essa mesma coisa para mostra no index  mas eu tenho q relacionar categoria para lancamentos-->
-          <td> <%= element.descricao %> </td>
-         <!--Relacionar categorias com elemento-->
-      </tr>
-      <% });%>  
-    </table>
-    <% }%>
-    </div>
+    <style>
+        .container img {
+      max-width:200px;
+      max-height:150px;
+      width: auto;
+      height: auto;
+  }
+    
+      h1{
+        text-align: center;
+        color: black;
+      }
+      body{
+        background-color: green;
+      }
+      *{
+        margin: 0%;
+      }
+    </style>
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->

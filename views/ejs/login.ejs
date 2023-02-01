@@ -15,9 +15,6 @@
   </head>
   <body>
     <center>
-      <p>Não tem Login ?</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_usuario">
-        Cadastre - se
-      </button>
       <div class="modal fade" id="modal_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -54,38 +51,83 @@
       </div>
     
     </center>
-    
-  <Br></Br>
-            <center>
-              <div class="card" style="width: 18rem;">
-              
-                <div class="card-body">
-              <form action="/login" method="POST">
-                <h3 style="color:rgb(255,215,0)">ControDinheiro</h3>
-                <img class="card-img-top" src="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2019/09/afinal-qual-e-a-origem-do-cifrao-quem-o-inventou-1.jpg" alt="ControDinheiro">
-                <fieldset> 
-                  <br>
-                  <input name="username" type="text" placeholder="Informe o seu nome"><br><Br>
-                  <input name="password" type="password" placeholder="Informe o sua senha"><br> 
-                  <input type="submit"  name="loguei" id="loguei" value="Login" />
-                  
-                 
-                  </fieldset>
-              </form>
-              </div>
-            <% if(message) { %>
-              <p>
-                <label style="color:Red"><%= message %></label>
-              </p>
-            <%}%>
-              
-            <button type="button" class="btn btn-danger" >
-              <a href="/">Voltar</a>
+
+    <div class="modal fade" id="modal_recuperar_senha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Recuperar Senha</h5><br>
+          
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
             </button>
-            </center>
-   
+          </div>
+          <div class="modal-body">
+            <form action="/saveUsuario" method="POST">
+              <div class="form-group">
+                <input name="username" type="email" class="form-control" placeholder="Imforme o Email para Recuperação">
+                
+              </div>
+             
+            </form>
     
-       <!--<script src="/script.js"></script>-->
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" >Enviar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  <Br></Br><br>
+            <center>
+            <div class="container">
+              <div class="jumbotron">
+                <form action="/login" method="POST">
+                  <h3 style="color:black">ControDinheiro</h3>
+                  <fieldset> 
+                    <br>
+                    <input name="username" type="text" placeholder="Informe o seu nome"><br><Br>
+                    <input name="password" type="password" placeholder="Informe o sua senha"><br> 
+                    <input type="submit"  name="loguei" id="loguei" value="Login" />
+                  
+                   </p>
+                    </fieldset>
+                    <button type="button"  data-toggle="modal" data-target="#modal_usuario">
+                      Cadastre-se
+                     </button>
+                    <button type="button"  data-toggle="modal" data-target="#modal_recuperar_senha">
+                      Esqueci a Senha
+                     </button>
+                </form>
+                <br>
+                <% if(message) { %>
+                  <p>
+                    <label style="color:Red"><%= message %></label>
+                  </p>
+                <%}%>
+              </div>
+            </div>
+
+          
+            </center>
+            
+            <style>
+              .jumbotron{
+                background-color: #696969;
+                left: 500px;
+                width: 300px;
+              }
+              p{
+                color: #90ee90;
+              }
+              body{
+                background-color: green;
+              }
+            </style>
+    
+    <!--<script src="/script.js"></script>-->
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

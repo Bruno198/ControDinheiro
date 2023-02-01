@@ -1,5 +1,5 @@
 const Limite = require("../models/Limite");
-const Lancamentos = require("../models/Lancamentos");
+const Lancamentos = require("../models/lancamentos");
 const Porcentagem = require("../models/Porcentagem");
 
 let armazena_porcentagem;

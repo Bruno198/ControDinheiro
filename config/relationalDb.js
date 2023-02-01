@@ -4,7 +4,7 @@ module.exports = {
     host: "localhost",
     username: "postgres",
     password: "postgres",
-    database : 'prog3',
+    database : 'ControDinheiro',
     port: 5432,
     define : {
         underscored: true,

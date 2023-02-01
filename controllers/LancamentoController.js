@@ -1,49 +1,35 @@
-const Lancamentos = require("../models/Lancamentos");
-const Limite = require("../models/Limite");
+const Lancamentos = require("../models/lancamentos");
+const Categoria = require("../models/Categoria");
+const Porcentagem = require("../models/Porcentagem");
+const { setInternalBufferSize } = require("bson");
 const User = require("../models/User");
+const { root } = require("./UsuarioController");
+const Conversao = require("../models/Conversao");
+const moment = require('moment');
 
-let armazena_limite;
+
+let salvaSaldo;
+let soma = 0;
+let converter, flag = 0, novoGanho, nao_convertido;
+let conversaos_dolar = [];
+let coveter_dolar, porcentagem, nomeUsuario, temp = 3, msg_logar;
+let id_lancamento;
+let pega_porcentagem;
+let dataFomatada = [], data_do_db, mais, dataconvertida;
+let data = new Date();
+let dia, mes, ano;
 module.exports = {
-   async saveLancamento (req, res) { 
-      let soma = "";
-      if(req.body.ganho === "on")
-      req.body.ganho = "Ganho";
-      else if(req.body.ganho !== "on")
-      req.body.gasto = "Gasto";
-    
-      else if(req.body.ganho === "on")
-      soma = soma + req.body.valor;
 
-      else if(req.body.gasto === "on")
-      soma = soma - req.body.valor;
-      console.log(soma +"\n");
-    //  req.body.data_lancamento
-    
-    armazena_limite = req.body.limite; // pode ser tenha q ser antes do criar
-    console.log("Salvou Limite no ControlerLancamentos "+ armazena_limite+"\n\n\n");
-   
-       await Lancamentos.create(req.body);
-       console.log("Salvou Lancamento "+"\n\n\n");
-       await Limite.create(req.body);
-      
-      
-      
-       console.log("SalvouLancamentos\n\n\n");
-       console.log("Salvou Limite "+ armazena_limite+"\n\n\n");
-       format24Hou(req.body.data_lancamento);
-      // aqui é só para salvar os lancamentos
-   //salvar faz insert e o load (listar) faz o select
-      
-        res.redirect("/");
-   },
-   listaCategoria (req, res) {
-      id_categoria.findAll().then((data) => {       
-   console.log("foilistada\n\n\n");
-   //            console.log(soma);
-         res.render(__dirname+"/../views/ejs/lancamentos", {listLancamento : data});
-       //  await Lancamentos.create(req.body);
-      })
-   }
-   
- 
-}
+  loadLancamentos(req, res) {
+        res.render(__dirname + "/../views/ejs/lancamento", {});
+
+
+  } , 
+  async save(req, res) {
+
+    await Lancamentos.create(req.body);
+    console.log("SalvouLancamentos\n\n\n");
+  }
+} 
+
+  
