@@ -28,6 +28,9 @@
                   <li class="nav-item active">
                     <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                   </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#" onclick="abrir_modalmoeda()">Moeda Dos Países <span class="sr-only">(current)</span></a>
+                  </li>
 
                   <li class="nav-item active">
                     <a class="nav-link" href="/categoria">Categoria <span class="sr-only">(current)</span></a>
@@ -45,15 +48,15 @@
     </div>
     </div>
    
-    <p>Limite Cadastrado : <%=" R$ "+ armazena_limite %></p>
+    <p>Limite Cadastrado : <%= armazena_limite %></p>
    
           <form action="/salva" method="POST">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Selecionar Moeda para o Lançamento</label>
-              <select class="form-control" id="moeda" name="moeda">
+              <select  id="moeda" name="moeda">
                   <datalist id="selecione">
-                      <% for(let i =1; i<= pais.length; i++) {%>
-                      <option><%= pais%> </option>
+                      <% for(let i =0; i<= moeda.length; i++) {%>
+                      <option><%= moeda[i]%> </option>
                       <% }%> 
                     </datalist>
               </select>
@@ -61,15 +64,17 @@
                
             </div>
             <div class="form-group row">
-              <label for="InputValorLancamento" class="col-sm-2 col-form-label">Valor de Lançamento</label>
+              <span class="input-group-text" id="inputGroup-sizing-sm"><%=moeda%></span>
               <div class="col-sm-10">
                 <input type="number" class="form-control"step="0.01" id="valor" name="valor" placeholder="Informe o Seu Lancamento">
               </div>
             </div>
+
+            
             <div class="form-group row">
               <label for="InputDataLancamento" class="col-sm-2 col-form-label">Data de Lançamento</label>
               <div class="col-sm-10">
-                <input type="date" class="form-control" id="data_lancamento" name="data_lancamento" placeholder="Informe a Data do Lancamento">
+                <input type="date" class="form-control" id="data_lancamento" name="data_lancamento" placeholder="Informe a Data do Lancamento<%=moeda%>">
               </div>
             </div>
             <fieldset class="form-group">
@@ -125,8 +130,38 @@
               </div>
             </div>
           </form>
+         
    
     </div>
+    <div class="modal fade" id="modal_moeda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Moedas dos Paises</h5><br>
+            
+              <span aria-hidden="true">&times;</span>
+           
+            
+          </div>
+          <% for(let i =0; i<= pais.length; i++) {%>
+            <p> Nome Do País: <%=pais[i] %> Nome dá Moeda: <%= moeda[i]%> </p>
+            <% }%> 
+          <div class="modal-body">
+            
+    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+
+      function abrir_modalmoeda(){
+        $('#modal_moeda').modal('show');
+      }
+    </script>
   
     
     

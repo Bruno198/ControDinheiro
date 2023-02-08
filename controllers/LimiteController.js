@@ -8,8 +8,8 @@ let armazena_limite;
 let utrapassou_limite;
 let valor_lancamento;
 let nomouser;
-let pais = ["EUA" , "Brazil" , "Italia"] , moeda = ["US$" , "R$"];
-let i = 0 , select , moedauser, b = 0;
+let pais = ["EUA" , "Brazil" , "Italia"] , moeda = ["US$","R$"];
+let  select , moedauser, b = 0;
 let pegaposicao = [];
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
             //for(b =0; b <=  pegaposicao.length; b++)
             //console.log(pegaposicao[b]);
             
-            res.render(__dirname+"/../views/ejs/lancamento", { i,moeda, pais ,moedauser ,listCategoria: dataCategoria , armazena_limite , listLancamento:data , utrapassou_limite , valor_lancamento});
+            res.render(__dirname+"/../views/ejs/lancamento", {moeda, pais ,moedauser ,listCategoria: dataCategoria , armazena_limite , listLancamento:data , utrapassou_limite , valor_lancamento});
             //console.log("LListouCategoria\n\n\n");
            
          armazena_limite = "";

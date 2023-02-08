@@ -163,6 +163,8 @@
 </div>
 
 
+
+
    <br>
    
     <% if(converter > 0){%>
@@ -193,8 +195,8 @@
       </thead>
       <% list.forEach( element => {%>
         <tr>
-          <td> <%=  %> <%=  element.moeda %> </td>
-          <td> <%=  %> <%=  element.valor %> </td>
+          <td> <%=  element.moeda %> </td>
+          <td> <%= element.moeda %> <%=  element.valor %> </td>
           <td><%=element.data_lancamento%></td>
           <td><%= element.ganho ? "+ Ganho" : "- Gasto"%></td>
           <td value="<%= element.categoria%>"><%= element.id_categoria%></td><!--Faz essa mesma coisa para mostra no index  mas eu tenho q relacionar categoria para lancamentos-->
@@ -209,6 +211,7 @@
     </table>
     <% }%>
     </div>
+    
     <script>
 
       function editarLancamento(){
@@ -218,10 +221,6 @@
       function abrir_limite(){
         $('#modal_limite').modal('show');
       }
-
-        function abrir_selecionarmoeda(){
-            $('#modal_selecionarmoeda').modal('show');
-        }
       
       
     </script>
