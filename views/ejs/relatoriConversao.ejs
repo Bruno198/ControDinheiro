@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet icon" href="/imagens/cifão.png">
+  </head>
+  <title>Relatorios</title>
+  <body>
+    <div id="divimg" class="container">
+      <img src="img/dinheiro.png" >
+      <h1>Conversãos Realizadas</h1>
+      <br>
+      <div class="row">
+       
+        <% if (listconvert.length  > 0) {%>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Valor Original</th>
+              <th scope="col">Valor Convertido</th>
+              <th scope="col">Data dá Conversão</th>
+             
+            </tr>
+          </thead>
+          <% listconvert.forEach( element => {%>
+            <tr>
+              <td><%= " R$ " + element.valor_original %> </td>
+              <td><%= " US$ " + element.valor_convertido %> </td>
+              <td><%= element.data_da_convercao%> </td>
+          </tr>
+          <% });%>   
+        </table>
+        <% }%>
+       
+        </div>
+        <h3 id="qtd_lancamentos">Quantidade de Conversãos <%= listconvert.length %></h3>
+      </div>
+      </div>
+     
+    <script>
+
+      function editarLancamento(){
+        window.location.href= "http://localhost:8080/lancamento";
+      }
+
+      function abrir_limite(){
+        $('#modal_limite').modal('show')
+      }
+      function pdf(){
+        window.location.href = "http://localhost:8080/pdf"
+      }
+    </script>
+
+    <style>
+      
+      p{
+        text-align: center;
+        color: black;
+      }
+        h1{
+            text-align: center;
+            color: black;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #divimg{
+          text-align: center;
+        }
+        tr td {
+          color: black;
+        }
+         
+      
+    </style>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+   <!--<script src="/script.js"></script>--> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
+<br><br><br>
+<header>
+  <%if(dia > 9 && mes < 9){%>
+    <h3>Relatorios ControDineiro Gerado em <%= dia %> / 0<%= mes %> / <%= ano %></h3>
+    <% }%>
+
+    <%if(mes > 9 && dia < 9){%>
+      <h3>Relatorios ControDineiro Gerado em 0<%= dia %> / <%= mes %> / <%= ano %></h3>
+      <% }%>
+
+      <%if(dia < 9 && mes < 9){%>
+        <h3>Relatorios ControDineiro Gerado em 0<%= dia %> / 0<%= mes %> / <%= ano %></h3>
+        <% }%>
+</header>

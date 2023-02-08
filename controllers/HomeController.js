@@ -2,12 +2,13 @@ const Lancamentos = require("../models/lancamentos");
 const Categoria = require("../models/Categoria");
 const Porcentagem = require("../models/Porcentagem");
 const { setInternalBufferSize } = require("bson");
-const User = require("../models/User");
 const { root } = require("./UsuarioController");
 const Conversao = require("../models/Conversao");
 const moment = require('moment');
 const Limite = require("../models/Limite");
-
+const { use } = require("passport");
+//const LimiteController = require("./LimiteController");
+const User = require('../models/User');
 
 let salvaSaldo;
 let soma = 0;
@@ -22,6 +23,8 @@ let dia, mes, ano;
 let armazena_limite;
 let utrapassou_limite;
 let valor_lancamento;
+let nomouser , sobrenomeUser;
+
       module.exports = {
 
         loadhome(req, res) {
@@ -31,15 +34,21 @@ let valor_lancamento;
             {
                 include: [{association: "categoria"}]
             }).then((user) =>{
+            
               Lancamentos.findAll().then((data) => {
 
                 Categoria.findAll().then((dataCategoria) => {
           
                   console.log("foi\n\n\n");
-                  msg_logar = "Faça Login Para Continuar Usando o Contro Dinheiro";
-          
-                  res.render(__dirname + "/../views/ejs/home", { dataFomatada, listCategoria: dataCategoria, list: data, categoriaList: data, converter, listconvert: data, salvaSaldo, novoGanho, nao_convertido, coveter_dolar, nomeUsuario, msg_logar, temp, id_lancamento, data_do_db });
-          
+                  
+                   nomouser = req.user.username;
+                   sobrenomeUser = req.user.user_sobrenome;
+               
+                  console.log("Seu nome é"+nomouser+ "E sobrenome "+ sobrenomeUser);
+                 
+                  //let valor = req.LimiteController.nomouser;
+                  res.render(__dirname + "/../views/ejs/home", {sobrenomeUser, nomouser, dataFomatada, listCategoria: dataCategoria, list: data, categoriaList: data, converter, listconvert: data, salvaSaldo, novoGanho, nao_convertido, coveter_dolar, nomeUsuario, msg_logar, temp, id_lancamento, data_do_db });
+                
       });
       })
       })
@@ -51,7 +60,7 @@ let valor_lancamento;
          
           await Lancamentos.create(req.body);
           console.log("SalvouLancamentos\n\n\n");
-      
+           
           let pegar_parametro = req.params.id;
           console.log("pegar parameto id" + pegar_parametro);
       
@@ -116,8 +125,7 @@ let valor_lancamento;
           // res.body.data_lancamento = data_do_db;
           //  console.log("A data  é " +  dataFomatada[i]);
           //}
-      
-      
+         
           res.redirect("/home");
       
         },
@@ -127,6 +135,9 @@ let valor_lancamento;
           let pegar = req.Lancamentos.id;
           console.log("Parametroda variavel pegar "+parametro);
           res.render(__dirname+"/../views/ejs/lancamento", {listCategoria: dataCategoria , armazena_limite , listLancamento:data , utrapassou_limite , valor_lancamento});
-         }
+         } ,
+
+      
+       
       
       }

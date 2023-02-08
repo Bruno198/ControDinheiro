@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      moeda: {
+        type: Sequelize.STRING 
+      },
+
       ganho: {
         type: Sequelize.STRING 
       },

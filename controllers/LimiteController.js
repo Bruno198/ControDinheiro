@@ -8,6 +8,10 @@ let armazena_limite;
 let utrapassou_limite;
 let valor_lancamento;
 let nomouser;
+let pais = ["EUA" , "Brazil" , "Italia"] , moeda = ["US$" , "R$"];
+let i = 0 , select , moedauser, b = 0;
+let pegaposicao = [];
+
 module.exports = {
     async saveLimite (req, res) { 
         await Limite.create(req.body);
@@ -24,8 +28,16 @@ module.exports = {
     loadLimit (req, res) {
         Lancamentos.findAll().then((data) => {// para fazer join includi e o nome dá tabela que eu quero fazer join
           Categoria.findAll().then((dataCategoria) => {
-            nomouser = req.user.username;
-            res.render(__dirname+"/../views/ejs/lancamento", {nomouser,listCategoria: dataCategoria , armazena_limite , listLancamento:data , utrapassou_limite , valor_lancamento});
+           // nomouser = req.user.username;
+            //sobrenomeuser = req.user.user_sobrenome;
+            moedauser = req.body.moeda;
+           // for(i =0; i <=  pais.length; i++){
+             // pegaposicao[b] = i;
+            //}
+            //for(b =0; b <=  pegaposicao.length; b++)
+            //console.log(pegaposicao[b]);
+            
+            res.render(__dirname+"/../views/ejs/lancamento", { i,moeda, pais ,moedauser ,listCategoria: dataCategoria , armazena_limite , listLancamento:data , utrapassou_limite , valor_lancamento});
             //console.log("LListouCategoria\n\n\n");
            
          armazena_limite = "";
