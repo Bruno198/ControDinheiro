@@ -8,7 +8,7 @@ let armazena_limite;
 let utrapassou_limite;
 let valor_lancamento;
 let nomouser;
-let pais = ["EUA" , "Brazil" , "Italia"] , moeda = ["US$","R$"];
+let pais = ["Estados Unidos/US$" , "Brazil/R$" , "Italia"] , moeda = ["US$","R$"];
 let  select , moedauser, b = 0;
 let pegaposicao = [];
 

@@ -162,6 +162,26 @@
   </div>
 </div>
 
+<div class="modal fade" id="modal_excluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Lançamento</h5><br>
+       
+          <span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body">
+        <h5>Tem certeza que deseja Excluir ?</h5>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" >SIM</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NÂO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
@@ -183,8 +203,8 @@
     <table class="table table-striped table-dark">
       <thead>
         <tr>
-          <th scope="col">Moeda</th>
-          <th scope="col">Valor</th>
+          <th scope="col">País/Moeda</th>
+          <th scope="col">Valor Lançado</th>
           <th scope="col">Data</th>
           <th scope="col">Tipo de Lançamento</th>
           <th scope="col">Categoria</th>
@@ -196,32 +216,34 @@
       <% list.forEach( element => {%>
         <tr>
           <td> <%=  element.moeda %> </td>
-          <td> <%= element.moeda %> <%=  element.valor %> </td>
+          <td> <%= element.valor %> Lancamento Em <%=  element.moeda %> </td>
           <td><%=element.data_lancamento%></td>
           <td><%= element.ganho ? "+ Ganho" : "- Gasto"%></td>
           <td value="<%= element.categoria%>"><%= element.id_categoria%></td><!--Faz essa mesma coisa para mostra no index  mas eu tenho q relacionar categoria para lancamentos-->
           <td> <%= element.descricao %> </td>
-          <td> <button type="button"class="btn btn-primary" data-toggle="modal" data-target="#modal_usuario" onclick="editarLancamento()"  >Editar
-          </button></td>
-          <td> <button type="button"class="btn btn-danger" data-toggle="modal" data-target="#modal_usuario"  >Excluir
-          </button></td>
+          <td>  <img src="img/editar.png" onclick="editarLancamento()"></td>
+          <td> <img src="img/lixo.png" onclick="abrir_modal_excluir()"></td>
          <!--Relacionar categorias com elemento-->
       </tr>
       <% });%>  
     </table>
     <% }%>
     </div>
+  
     
     <script>
 
       function editarLancamento(){
-        window.location.href= "http://localhost:8080/lancamento";
+        window.location.href= "http://localhost:8080/lancamento/:id";
       }
 
       function abrir_limite(){
         $('#modal_limite').modal('show');
       }
-      
+
+      function abrir_modal_excluir(){
+        $('#modal_excluir').modal('show');
+      }
       
     </script>
 

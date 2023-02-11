@@ -87,6 +87,8 @@ app.post("/saveUsuario" , UsuarioController.saveUsuario);
 app.post("/salva", expiroulogin,authenticationMiddleware,HomeController.saveLancamento);
 app.post("/salvaCategoria", expiroulogin,authenticationMiddleware,CategoriaController.saveCategoria);
 app.post("/salvaLimite", expiroulogin,authenticationMiddleware,LimiteController.saveLimite);
+app.post("/salvaConversaos" , ConverterLancamentoController.salvaConversaos);
+//app.post("/salvaconvercao",salvaconvercao);
 
 
 
@@ -161,6 +163,12 @@ app.get("/relatorio" ,async (req , res) =>{
 
     return res.send(pdf);
 });
+
+
+    
+   
+  
+
 
 const server = app.listen(8080, function () {
     console.log("Running");

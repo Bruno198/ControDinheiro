@@ -13,21 +13,56 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <br><br>
-  <center>
+
     <body>
-      <div class="container">
-    
-        <img src="img/dinheiro.png" >
-          <h1 style="font-size: 30;">ControDinheiro</h1>
-          <h3 style="color: black;">Gerencie seus Gastos e Ganhos</h3>
+      <div id="butonnaesquerda" class="container">
+        <h1 style="font-size: 30;">ControDinheiro</h1>
         <button type="button" class="btn btn-success" onclick="Login()">Entrar
         </button>
         <button type="button"class="btn btn-danger" data-toggle="modal" data-target="#modal_usuario"  >Não tem Login Cadatre-se
         </button>
-        
       </div>
-  </center>
-  <center>
+      <div id="logoinicial" class="container">
+        
+        <img  src="img/dinheiro.png" >
+          
+          <h3 style="color: black;">Gerencie seus Gastos e Ganhos No Paíss que voçe Estiver</h3>
+          <hr>
+        <div class="row">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="img/relatorio.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">relatorios</h5>
+              <p class="card-text">Estabeleça relatorios de gastos e ganhos</p>
+            </div>
+          </div>
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      <div class="row">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="img/icone.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Conversãos</h5>
+            <p class="card-text">Realize conversão com qualquer valor de Moeda</p>
+          </div>
+        </div>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      </div>
+      <div class="row">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+        <div class="col">
+          
+        </div>
+      
+      </div>
+    </div>
+      </div>
+  
     <div class="modal fade" id="modal_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -62,7 +97,7 @@
         </div>
       </div>
     </div>
-  
+ 
   </center>
   <script>
     function Login(){
@@ -89,6 +124,18 @@
       }
     body{
       background-color: rgb(104, 240, 104)
+    }
+    h3{
+      text-align: center;
+    }
+    #logoinicial{
+      text-align: center;
+    }
+    #butonnaesquerda{
+      text-align: right;
+    }
+    .card{
+      background-color: white;
     }
     </style>
 
